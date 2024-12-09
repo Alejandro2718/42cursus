@@ -8,11 +8,12 @@ int		ft_isascii(int as);
 int		ft_isprint(int pr);
 int		ft_strlen(char *s);
 void	*ft_memset(void *str, int c, unsigned int n);
+void	bzero(void *s, size_t n);
 
 int	main(void)
 {
 	//ALPHA
-	printf("Is alpha: %i TRUE\n", ft_isalpha('g'));
+	printf("\n\nIs alpha: %i TRUE\n", ft_isalpha('g'));
 	printf("Is alpha: %i FALSE\n\n", ft_isalpha('0'));
 	//DIGIT
 	printf("Is digit: %i TRUE\n", ft_isdigit('9'));
@@ -32,8 +33,24 @@ int	main(void)
 	printf("String lenght: %i \n\n", ft_strlen("turtle"));
 	//MEMORY SET
 	char s[12] = "Hola a todos";
-	int n[4] = {1, 2, 3, 4};
-	printf("String before: %s \n", s);
-	ft_memset(s, 'A', 4);
+	printf("MEMSET\nString before: %s \n", s);
+	ft_memset(s, 'A', 5);
 	printf("String after: %s \n\n", s);
+	int n[4] = {1, 20, 3, 4};
+	printf("Size of array n = %li\n", sizeof(n));
+	printf("List of numbers before: ");
+	for (int i = 0; i < 4; i++) {
+ 		printf("%d ", n[i]);
+	}
+	printf("\n");
+	ft_memset(n, 0, 8);
+	printf("List of numbers after: ");
+	for (int i = 0; i < 4; i++) {
+ 		printf("%d ", n[i]);
+	}
+	printf("\n\nBZERO");
+	//BZERO
+	printf("\nBefore Bzero: %s\n", s);
+	bzero(s, 5);
+	printf("After Bzero: %s\n", s);
 }
