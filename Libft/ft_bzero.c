@@ -6,13 +6,19 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:52:16 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/09 14:49:03 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:40:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+This function take the pointer to a string and
+fill with '\0'(NULL) many spaces, from the pointer, 
+as the size_t indicate.
+Used to erase values of a string. 
+*/
 #include <stddef.h>
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;
 	unsigned char	*str;

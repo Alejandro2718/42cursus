@@ -6,16 +6,18 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:56:53 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/09 14:18:50 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:17:24 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+This function takes an array of int or char, a int with the value
+in decimal of an ascii character, and a size_t.
+The function will fill the string with the character(int c) until
+(size_t n) indicated. 
+*/
 #include <stddef.h>
-// #if defined(__x86_64__) || defined(_MX64)
-// typedef unsigned long size_t;
-// #elif defined(__i386__) || defined(_M_IX86)
-// typedef unsigned int size_t;
-// #endif
+
 void	*ft_memset(void *str, int c, size_t n)
 {
 	size_t			i;
