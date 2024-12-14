@@ -10,6 +10,7 @@ int		ft_isprint(int pr);
 int		ft_strlen(char *s);
 void	*ft_memset(void *str, int c, unsigned int n);
 void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 int	main(void)
 {
@@ -53,7 +54,7 @@ int	main(void)
 	printf("ORIGINAL\nString lenght: %li \n", strlen("hol4s"));
 	printf("String lenght: %li \n\n", strlen("turtle"));
 	//MEMORY SET
-	char s[12] = "Hola a todos";
+	char s[] = "Hola a todos";
 	printf("My ft_memset---------\nString before: %s \n", s);
 	ft_memset(s, 'A', 5);
 	printf("String after: %s \n\n", s);
@@ -71,7 +72,7 @@ int	main(void)
 	}
 
 
-	char p[12] = "Hola a todos";
+	char p[] = "Hola a todos";
 	printf("\n\nORIGINAL\nString before: %s \n", p);
 	memset(p, 'A', 5);
 	printf("String after: %s \n\n", p);
@@ -89,7 +90,7 @@ int	main(void)
 	}
 	//BZERO
 	char t[6] = "Zabka";
-	printf("\n\nMy ft_bzero---------\nBefore Bzero: %s\n", t);
+	printf("\n\nMy ft_bzero------------------\nBefore Bzero: %s\n", t);
 	ft_bzero(t, 3);
 	printf("After Bzero: ");
 	for (int j = 0; j < 6; j++)
@@ -107,4 +108,19 @@ int	main(void)
 		printf("%c", y[j]);
 	}
 	printf("\n");
+	//MEMCPY
+	const char r[] = "Prove";
+	char e[] = "destination";
+	
+	printf("\nMY ft_memcpy------------------\nBefore memcpy:\nSource: %s\nDestination: %s\n", r, e);
+	ft_memcpy(e, r, 5);
+	printf("\n\nAfter memcpy:\nSource: %s\nDestination: %s\n", r, e);
+
+	const char pt[] = "Prove";
+	char o[] = "destination";
+	printf("\nORIGINAL\nBefore memcpy:\nSource: %s\nDestination: %s\n", pt, o);
+	memcpy(o, pt, 5);
+	printf("\n\nAfter memcpy:\nSource: %s\nDestination: %s\n", pt, o);
+	//MEMMOVE
+	
 }
