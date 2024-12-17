@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 /*
-
+This function copy n bytes from source to destination
+and copy in reverse if overlap exist, and copy forwards
+if not.
 */
 #include <stddef.h>
 
@@ -20,17 +22,27 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t				i;
 	unsigned char		*d;
 	const unsigned char	*s;
-	const unsigned char	*buffer;
 
 	s = (const unsigned char *) src;
-	buffer = s;
 	d = (unsigned char *) dest;
-	i = 0;
-	while (i < n)
+	
+	if (d > s && d < s + n)
 	{
-		d[i] = buffer[i];
-		i++;
+		i = n;
+		while (i > 0)
+		{
+			i--;
+			d[i] = s[i];
+		}
 	}
-
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
 	return (dest);
 }
