@@ -72,7 +72,6 @@ int	main(void)
  		printf("%d ", n[i]);
 	}
 
-
 	char p[] = "Hola a todos";
 	printf("\n\nORIGINAL\nString before: %s \n", p);
 	memset(p, 'A', 5);
