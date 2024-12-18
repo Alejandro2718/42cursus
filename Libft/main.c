@@ -12,6 +12,8 @@ void	*ft_memset(void *str, int c, unsigned int n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 int	main(void)
 {
@@ -122,5 +124,62 @@ int	main(void)
 	memcpy(o, pt, 5);
 	printf("\n\nAfter memcpy:\nSource: %s\nDestination: %s\n", pt, o);
 	//MEMMOVE
+	const char sour[] = "Ejemplo";
+	char des[] = "Destinosiou";
+	printf("\nMY ft_memmove------------------\nBefore memmove:\nSource: %s\nDestination: %s\n", sour, des);
+	ft_memmove(des, sour, 3);
+	printf("\n\nAfter memmove:\nSource: %s\nDestination: %s\n", sour, des);
+
+	const char sor[] = "Ejemplo";
+	char ds[] = "Destinosiou";
+	printf("\nORIGINAL\nBefore memmove:\nSource: %s\nDestination: %s\n", sor, ds);
+	memmove(ds, sor, 3);
+	printf("\n\nAfter memmove:\nSource: %s\nDestination: %s\n", sor, ds);
+
+	//STRLCPY
+	char tse[] = "Hello,World!";
+    char test[8];
+	size_t len = ft_strlcpy(test, tse, sizeof(test));
+	printf("\nMY ft_strlcpy------------------\nDestination: %s\n", test);
+    printf("Lenght: %zu\n", len);
 	
+	//STRLCAT
+	char dst[12] = "Hello";
+    char src[] = " World!";
+    size_t nun = sizeof(dst);
+
+    size_t lten = ft_strlcat(dst, src, nun);
+
+    printf("\n\n\nDestino: %s\n", dst);
+    printf("Longitud total: %zu\n", lten);
+
+
+
+
+
+
+
+
+	char dst1[15] = "Hello";
+    const char srrc[] = " World!";
+    size_t result;
+
+    // Caso 1: Espacio suficiente
+    result = ft_strlcat(dst1, srrc, sizeof(dst1));
+    printf("\n\n\n\n\n\n\nCaso 1: %s (Longitud total: %zu)\n", dst1, result);
+
+    // Caso 2: Espacio insuficiente
+    char dst2[10] = "Hello";
+    result = ft_strlcat(dst2, srrc, sizeof(dst2));
+    printf("Caso 2: %s (Longitud total: %zu)\n", dst2, result);
+
+    // Caso 3: size == 0
+    char dst3[10] = "Hello";
+    result = ft_strlcat(dst3, srrc, 0);
+    printf("Caso 3: %s (Longitud total: %zu)\n", dst3, result);
+
+    // Caso 4: dst vacío
+    char dst4[15] = "";
+    result = ft_strlcat(dst4, srrc, sizeof(dst4));
+    printf("Caso 4: %s (Longitud total: %zu)\n", dst4, result);
 }
