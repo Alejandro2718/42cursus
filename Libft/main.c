@@ -14,6 +14,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+int	ft_toupper(int c);
+int ft_tolower(int c);
+char	*ft_strchr(const char *str, int search_str);
 
 int	main(void)
 {
@@ -153,33 +156,40 @@ int	main(void)
     printf("\n\n\nDestino: %s\n", dst);
     printf("Longitud total: %zu\n", lten);
 
-
-
-
-
-
-
-
 	char dst1[15] = "Hello";
     const char srrc[] = " World!";
     size_t result;
 
-    // Caso 1: Espacio suficiente
+    // Caso 1
     result = ft_strlcat(dst1, srrc, sizeof(dst1));
     printf("\n\n\n\n\n\n\nCaso 1: %s (Longitud total: %zu)\n", dst1, result);
 
-    // Caso 2: Espacio insuficiente
+    // Caso 2
     char dst2[10] = "Hello";
     result = ft_strlcat(dst2, srrc, sizeof(dst2));
     printf("Caso 2: %s (Longitud total: %zu)\n", dst2, result);
 
-    // Caso 3: size == 0
+    // Caso 3
     char dst3[10] = "Hello";
     result = ft_strlcat(dst3, srrc, 0);
     printf("Caso 3: %s (Longitud total: %zu)\n", dst3, result);
 
-    // Caso 4: dst vacío
+    // Caso 4
     char dst4[15] = "";
     result = ft_strlcat(dst4, srrc, sizeof(dst4));
     printf("Caso 4: %s (Longitud total: %zu)\n", dst4, result);
+
+	// TOUPPER
+	char upper = 'd';
+	printf("\nMY ft_toupper------------------\nBefore: %c\n", upper);
+	ft_toupper(upper);
+	printf("\nAfter: %c", upper);
+
+	// TOLOWER
+	char lower = 'r';
+	printf("\nMY ft_tolower------------------\nBefore: %c\n", lower);
+	ft_tolower(lower);
+	printf("\nAfter: %c\n", lower);
+
+	// STRCHR
 }
