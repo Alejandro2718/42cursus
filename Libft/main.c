@@ -15,8 +15,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int	ft_toupper(int c);
-int ft_tolower(int c);
+int	ft_tolower(int c);
 char	*ft_strchr(const char *str, int search_str);
+char	*ft_strrchr(const char *str, int chr);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 int	main(void)
 {
@@ -162,7 +167,7 @@ int	main(void)
 
     // Caso 1
     result = ft_strlcat(dst1, srrc, sizeof(dst1));
-    printf("\n\n\n\n\n\n\nCaso 1: %s (Longitud total: %zu)\n", dst1, result);
+    printf("\n\nCaso 1: %s (Longitud total: %zu)\n", dst1, result);
 
     // Caso 2
     char dst2[10] = "Hello";
@@ -182,14 +187,69 @@ int	main(void)
 	// TOUPPER
 	char upper = 'd';
 	printf("\nMY ft_toupper------------------\nBefore: %c\n", upper);
-	ft_toupper(upper);
-	printf("\nAfter: %c", upper);
+	
+	printf("\nAfter: %c", ft_toupper(upper));
 
 	// TOLOWER
-	char lower = 'r';
+	char lower = 'R';
 	printf("\nMY ft_tolower------------------\nBefore: %c\n", lower);
-	ft_tolower(lower);
-	printf("\nAfter: %c\n", lower);
+	
+	printf("\nAfter: %c\n", ft_tolower(lower));
 
 	// STRCHR
+	const char *string = "Welcome to Tutorialspoint";
+	char ch = 'e';
+
+	char *pre = strchr(string, ch);
+
+	printf("\nMY ft_strchr------------------\nString starting with %c is: %s\n", ch, pre);
+
+	// STRRCHR
+
+   	const char streng[] = "https://www.tutorialspoint.com";
+   	const char che = '.';
+   	char *ret;
+
+   	ret = ft_strrchr(streng, che);
+
+   	printf("\nMY ft_strrchr------------------\nString after %c is %s\n", che, ret);
+
+	// STRNCMP
+	char str1[15];
+   	char str2[15];
+   	int reto;
+   	strcpy(str1, "abcde");
+   	strcpy(str2, "abcdE");
+
+	printf("\nMY ft_strncmp------------------\n");
+   	reto = ft_strncmp(str1, str2, 3);
+   	if(reto < 0) 
+    	printf("str1 is less than str2");
+   		else if(reto > 0) 
+    		printf("str2 is less than str1");
+   		else 
+    		printf("str1 is equal to str2");
+	printf("\n");
+
+	// MEMCHR
+	char myStr[] = "Hello World!";
+  	char *myPtr = (char*)ft_memchr(myStr, 'o', 12);
+  	if (myPtr != NULL) {
+    	printf("\n%s\n", myPtr);
+  	}
+
+	// MEMCMP
+	int arr1[] = {1, 2, 3, 4, 5};
+  	int arr2[] = {1, 2, 3, 4, 5};
+
+   	int esult = ft_memcmp(arr1, arr2, sizeof(arr1));
+	printf("\n\n");
+   	if (esult == 0) {
+    	printf("Arrays are equal\n");
+   	} else {
+    	printf("Arrays are not equal\n");
+   	}
+
+	// STRNSTR
+
 }

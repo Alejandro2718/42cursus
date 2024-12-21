@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:40:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/21 17:04:24 by alejjime         ###   ########.fr       */
+/*   Created: 2024/12/21 19:31:34 by alejjime          #+#    #+#             */
+/*   Updated: 2024/12/21 20:25:08 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function takes a uppercase as int value,
-if is uppercase, this function transform to lower, otherwise
-return the same int entered unchanged.
+This function search for a char in the 
+memory area and return a pointer
+to the char onward.
 */
 #include <stddef.h>
 
-int	ft_tolower(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	lower;
+	size_t	i;
+	char	*string;
 
-	if (c >= 'A' && c <= 'Z')
+	string = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		lower = c + 32;
-		return (lower);
+		if (string[i] == (char)c)
+		{
+			return (&string[i]);
+		}
+		i++;
 	}
-	return (c);
+	return (NULL);
 }

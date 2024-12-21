@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:40:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/21 17:04:24 by alejjime         ###   ########.fr       */
+/*   Created: 2024/12/21 17:18:26 by alejjime          #+#    #+#             */
+/*   Updated: 2024/12/21 20:11:36 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function takes a uppercase as int value,
-if is uppercase, this function transform to lower, otherwise
-return the same int entered unchanged.
+This function returns a pointer to
+the last appearance of a character onward
 */
-#include <stddef.h>
 
-int	ft_tolower(int c)
+char	*ft_strrchr(const char *str, int chr)
 {
-	int	lower;
+	char	*temp;
+	int		i;
+	char	*string;
 
-	if (c >= 'A' && c <= 'Z')
+	i = 0;
+	string = (char *)str;
+	while (string[i] != '\0')
 	{
-		lower = c + 32;
-		return (lower);
+		if (string[i] == (char)chr)
+		{
+			temp = &string[i];
+		}
+		i++;
 	}
-	return (c);
+	if (chr == '\0')
+	{
+		return ((char *)&string[i]);
+	}
+	return (temp);
 }

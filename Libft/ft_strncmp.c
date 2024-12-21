@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 21:40:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/21 17:04:24 by alejjime         ###   ########.fr       */
+/*   Created: 2024/12/21 18:04:16 by alejjime          #+#    #+#             */
+/*   Updated: 2024/12/21 19:28:42 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function takes a uppercase as int value,
-if is uppercase, this function transform to lower, otherwise
-return the same int entered unchanged.
+This function compares n bytes of both strings
+and return a integer: 
+- Negative, if the str1 is less than str2.
+- Positive, if the str2 is less than str1.
+- zero, if the str1 is equal to str2.
 */
 #include <stddef.h>
 
-int	ft_tolower(int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	lower;
+	size_t	i;
+	int		j;
 
-	if (c >= 'A' && c <= 'Z')
+	j = 0;
+	i = 0;
+	while ((char)s1[i] != '\0' && (char)s2[i] != '\0' && i < n)
 	{
-		lower = c + 32;
-		return (lower);
+		if (s1[i] < s2[i])
+			return (-1);
+		if (s1[i] > s2[i])
+			return (1);
+		i++;
 	}
-	return (c);
+	return (0);
 }

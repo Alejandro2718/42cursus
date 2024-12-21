@@ -3,27 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:25:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/20 22:25:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 17:58:37 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-
+This function return a pointer to the location
+of the string beginning with the searched letter
 */
 char	*ft_strchr(const char *str, int search_str)
 {
 	int		i;
 	char	temp;
+	char	*string;
 
 	i = 0;
-	temp = search_str + '0';
-	while (str[i] != '\0')
+	string = (char *)str;
+	while (string[i] != '\0')
 	{
-		if (str[i] == temp)
-			return (str);
+		if (string[i] == (char)search_str)
+			return (string);
 		i++;
 	}
+	if (search_str == '\0')
+    	return ((char *)&string[i]);
 }

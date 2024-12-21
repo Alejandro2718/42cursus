@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:55:30 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/20 20:55:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/21 17:01:46 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ return the same int entered unchanged.
 
 int	ft_toupper(int c)
 {
-	int upper;
+	int	upper;
 
 	if (c >= 'a' && c <= 'z')
 	{
