@@ -243,7 +243,7 @@ int	main(void)
   	int arr2[] = {1, 2, 3, 4, 5};
 
    	int esult = ft_memcmp(arr1, arr2, sizeof(arr1));
-	printf("\n\n");
+	printf("\nMY ft_memcmp------------------\n");
    	if (esult == 0) {
     	printf("Arrays are equal\n");
    	} else {
@@ -251,5 +251,11 @@ int	main(void)
    	}
 
 	// STRNSTR
+	printf("\n\nMY ft_strnstr------------------");
+	char *frase = "Foo Bar Baz";
+	char *peq = "Fo";
+	char *coin = ft_strnstr(frase, peq, 11);
+	printf("\nFound: %s\n", coin);
 
+	// ATOI
 }
