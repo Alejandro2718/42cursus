@@ -24,6 +24,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int	ft_atoi(const char *str);
 
+void	*ft_calloc(size_t nmemb, size_t size);
+
 int	main(void)
 {
 	//ALPHA
@@ -260,7 +262,10 @@ int	main(void)
 
 	// ATOI
 	printf("\n\nMY ft_atoi------------------");
-	char *numb = "    -054";
+	char *numb = "  \n  425*2654";
 	int yesul = ft_atoi(numb);
 	printf("\nIngresado: %s\nResultado: %i\n", numb, yesul);
+
+
+	// CALLOC
 }

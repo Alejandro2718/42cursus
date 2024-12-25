@@ -6,12 +6,14 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:13:06 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/24 21:16:31 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/25 14:40:54 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-
+This functions takes a pointer to a string
+and convert the numbers in the string into 
+integer and return it
 */
 int	ft_atoi(const char *str)
 {
@@ -20,24 +22,21 @@ int	ft_atoi(const char *str)
 	int	temp;
 
 	i = 0;
+	negative = 0;
+	temp = 0;
 	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' \
 	|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
 	{
-		i++;
 		negative = 1;
+		i++;
 	}
 	else if (str[i] == '+')
-	{
 		i++;
-		negative = 0;
-	}
-	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		temp = temp + (str[i] - '0');
-		if (str[i + 1] != '\0')
-			temp *= 10;
+		temp = temp * 10 + (str[i] - '0');
 		i++;
 	}
 	if (negative)
