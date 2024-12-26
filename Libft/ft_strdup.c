@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:33:17 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/26 14:53:39 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:01:41 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ the block of memory copied from the original.
 */
 #include "libft.h"
 
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*copy;
 	int		size;
