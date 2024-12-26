@@ -268,4 +268,39 @@ int	main(void)
 
 
 	// CALLOC
+	const char *original = "Hello, World!";
+	char *duplicated = strdup(original);
+
+	if (duplicated)
+	{
+		printf("Original: %s\n", original);
+		printf("Duplicated: %s\n", duplicated);
+		free(duplicated);
+	}
+	else
+	{
+		printf("Error: No se pudo duplicar la cadena.\n");
+	}
+
+	// Probar con puntero nulo
+	char *null_test = strdup(NULL);
+	if (!null_test)
+		printf("Correcto: strdup(NULL) devolvió NULL.\n");
+
+
+	// STRDUP
+	const char *original = "Hello, World!";
+	char *duplicated = strdup(original);
+
+	if (duplicated)
+	{
+		printf("Original: %s\n", original);
+		printf("Duplicated: %s\n", duplicated);
+		free(duplicated); // Liberar memoria
+	}
+	else
+	{
+		printf("Error: No se pudo duplicar la cadena.\n");
+	}
+
 }
