@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:25:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/21 17:58:37 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:25:47 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 This function return a pointer to the location
 of the string beginning with the searched letter
 */
+#include "libft.h"
+
 char	*ft_strchr(const char *str, int search_str)
 {
 	int		i;
@@ -29,5 +31,6 @@ char	*ft_strchr(const char *str, int search_str)
 		i++;
 	}
 	if (search_str == '\0')
-    	return ((char *)&string[i]);
+		return ((char *)&string[i]);
+	return (NULL);
 }

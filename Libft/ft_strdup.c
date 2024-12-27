@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:33:17 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/26 15:01:41 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:04:56 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ char	*ft_strdup(const char *s)
 	{
 		size++;
 	}
-
 	copy = malloc((size + 1) * sizeof(char));
 	i = 0;
 	while (s[i] != '\0')

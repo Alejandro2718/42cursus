@@ -210,10 +210,11 @@ int	main(void)
 	printf("\n");
 
 	// MEMCHR
+	printf("\nMY ft_memchr------------------\n");
 	char myStr[] = "Hello World!";
   	char *myPtr = (char*)ft_memchr(myStr, 'o', 12);
   	if (myPtr != NULL) {
-    	printf("\n%s\n", myPtr);
+    	printf("\nfound: %s\n", myPtr);
   	}
 
 	// MEMCMP
@@ -231,7 +232,7 @@ int	main(void)
 	// STRNSTR
 	printf("\n\nMY ft_strnstr------------------");
 	char *frase = "Foo Bar Baz";
-	char *peq = "Fo";
+	char *peq = "Bar";
 	char *coin = ft_strnstr(frase, peq, 11);
 	printf("\nFound: %s\n", coin);
 
@@ -243,39 +244,35 @@ int	main(void)
 
 
 	// CALLOC
-	const char *origial = "Hello, World!";
-	char *duplicatd = strdup(origial);
+	printf("\n\nMy ft_calloc------------------\n");
+	 size_t ne = 5;
+    int *arr = (int *)ft_calloc(ne, sizeof(int));
 
-	if (duplicatd)
-	{
-		printf("Original: %s\n", origial);
-		printf("Duplicated: %s\n", duplicatd);
-		free(duplicatd);
-	}
-	else
-	{
-		printf("Error: No se pudo duplicar la cadena.\n");
-	}
+    if (!arr)
+    {
+        printf("Error al asignar memoria.\n");
+        return 1;
+    }
 
-	// Probar con puntero nulo
-	char *null_test = ft_strdup(NULL);
-	if (!null_test)
-		printf("Correcto: strdup(NULL) devolvió NULL.\n");
+    for (size_t i = 0; i < ne; i++)
+        printf("%d ", arr[i]);
 
+    free(arr);
 
 	// STRDUP
 	const char *orginal = "Hello, World!";
 	char *duplicated = ft_strdup(orginal);
-
+	printf("\n\nMy ft_strdup------------------\n");
 	if (duplicated)
 	{
 		printf("Original: %s\n", orginal);
 		printf("Duplicated: %s\n", duplicated);
-		free(duplicated); // Liberar memoria
+		free(duplicated);
 	}
 	else
 	{
 		printf("Error: No se pudo duplicar la cadena.\n");
 	}
+	printf("\n\n");
 
 }

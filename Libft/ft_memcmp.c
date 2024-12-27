@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:16:49 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/21 20:39:41 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:21:39 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		if (string1[i] < string2[i])
 			return (-1);
-		if (string1[i] > string1[i])
+		if (string1[i] > string2[i])
 			return (1);
 		i++;
 	}
