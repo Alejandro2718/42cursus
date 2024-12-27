@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 19:12:09 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/18 20:47:53 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:18 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ to copy to source, return the addition of lenghts destination
 and source if not truncate, and the total lenght of destination
 after coping if truncated.
 */
-#include <stddef.h>
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

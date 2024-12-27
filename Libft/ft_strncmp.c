@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:04:16 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/27 19:23:45 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:09 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ and return a integer:
 - Positive, if the str2 is less than str1.
 - zero, if the str1 is equal to str2.
 */
-#include <stddef.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

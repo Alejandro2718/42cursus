@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:06:09 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/18 17:53:07 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:30 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ and a number, the function will copy n number of
 bytes from source to destination and return the destination
 with what was copied from source into the dest
 */
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

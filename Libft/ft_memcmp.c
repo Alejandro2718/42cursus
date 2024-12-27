@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:16:49 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/27 18:08:01 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:33 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ and comparate them:
 - Positive, if the str2 is less than str1.
 - zero, if the str1 is equal to str2.
 */
-#include <stddef.h>
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 16:59:37 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/27 17:08:33 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:28 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ This function copy n bytes from source to destination
 and copy in reverse if overlap exist, and copy forwards
 if not.
 */
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

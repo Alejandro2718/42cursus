@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:56:53 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/11 21:17:24 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:25 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ in decimal of an ascii character, and a size_t.
 The function will fill the string with the character(int c) until
 (size_t n) indicated. 
 */
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {

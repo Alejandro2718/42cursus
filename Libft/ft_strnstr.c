@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 20:40:37 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/27 17:09:57 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:32:00 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ This function takes two strings and try to find the
 little string into the big string, return big if little 
 is empty and null if little is not find into big 
 */
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
