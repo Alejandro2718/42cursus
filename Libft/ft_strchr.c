@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:25:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/27 17:25:47 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:22:26 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *str, int search_str)
 	while (string[i] != '\0')
 	{
 		if (string[i] == (char)search_str)
-			return (string);
+			return (&string[i]);
 		i++;
 	}
 	if (search_str == '\0')

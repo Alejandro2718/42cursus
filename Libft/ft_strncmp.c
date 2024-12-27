@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 18:04:16 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/21 19:28:42 by alejjime         ###   ########.fr       */
+/*   Updated: 2024/12/27 19:23:45 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	j = 0;
 	i = 0;
-	while ((char)s1[i] != '\0' && (char)s2[i] != '\0' && i < n)
+	while (i < n)
 	{
 		if (s1[i] < s2[i])
 			return (-1);
