@@ -37,8 +37,8 @@ int	main(void)
 	printf("Is printable: %i FALSE\n\n", isprint('\n'));
 		
 	//STRING LENGHT
-	printf("MY ft_strlen---------\nString lenght: %i \n", ft_strlen("hol4s"));
-	printf("String lenght: %i \n\n", ft_strlen("turtle"));
+	printf("MY ft_strlen---------\nString lenght: %zu \n", ft_strlen("hol4s"));
+	printf("String lenght: %zu \n\n", ft_strlen("turtle"));
 
 	printf("ORIGINAL\nString lenght: %li \n", strlen("hol4s"));
 	printf("String lenght: %li \n\n", strlen("turtle"));
@@ -275,4 +275,25 @@ int	main(void)
 	}
 	printf("\n\n");
 
+	// SUBSTR
+	char const *origin = "Hello, World!";
+	printf("\n\nMy ft_substr------------------\n");
+	char *self = ft_substr(origin, 1, 5);
+	printf("\nResult: %s\n", self);
+	free(self);
+
+	// STRJOIN
+	char const *r1, *r2;
+	char *resilt;
+	printf("\n\nMy ft_strjoin------------------\n");
+	r1 = "hola";
+	r2 = "chao";
+	resilt = ft_strjoin(r1, r2);
+	printf("\nUnidos: %s final\n", resilt);
+	free(resilt);
+
+	// STRTRIM
+	printf("\n\nMy ft_strtrim------------------\n");
+	char *sre = ft_strtrim("   xxxtripouille", "x");
+	printf("\n\nCadena resultante:%s\n", sre);
 }
