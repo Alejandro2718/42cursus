@@ -296,4 +296,6 @@ int	main(void)
 	printf("\n\nMy ft_strtrim------------------\n");
 	char *sre = ft_strtrim("   xxxtripouille", "x");
 	printf("\n\nCadena resultante:%s\n", sre);
+
+	// SPLIT
 }

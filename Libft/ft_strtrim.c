@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 /*
-
+This function return a copy of the string give
+as a paramether but deleting the beginning and the end
+of the string that matches with the set gave as paramether too.
+(Look for the each character from set into s1)
 */
 #include "libft.h"
 
@@ -31,20 +34,25 @@ int	set_in_string(char letter, char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*temp;
 	int		i;
-	int		j;
 	int		start;
 	int		end;
-	int		set_len;
+	char	*s1_copy;
 
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
-	i = 0;
 	end = 0;
-	while (set_in_string(s1[start], set) == 1)
+	while (set_in_string(s1[start], set) == 1 && s1[start] != '\0')
 		start++;
-	while (set_in_string(s1[start + i], set) != 1)
-		i++;
+	end = ft_strlen(s1) - 1;
+	while (end >= start && set_in_string(s1[end], set) == 1)
+		end--;
+	if (start > end)
+		return (ft_strdup(""));
+	s1_copy = (char *)malloc(end - start + 2);
+	if (!s1_copy)
+		return (NULL);
+	ft_strlcpy(s1_copy, &s1[start], end - start + 2);
+	return (s1_copy);
 }
