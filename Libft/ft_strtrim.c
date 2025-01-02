@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:08:45 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/31 21:26:33 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/02 16:01:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	start = 0;
 	end = 0;
-	while (set_in_string(s1[start], set) == 1 && s1[start] != '\0')
+	while (set_in_string((char)s1[start], (char *)set) \
+	== 1 && s1[start] != '\0')
 		start++;
 	end = ft_strlen(s1) - 1;
-	while (end >= start && set_in_string(s1[end], set) == 1)
+	while (end >= start && set_in_string((char)s1[end], (char *)set) == 1)
 		end--;
 	if (start > end)
 		return (ft_strdup(""));

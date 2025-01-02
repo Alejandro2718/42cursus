@@ -298,4 +298,7 @@ int	main(void)
 	printf("\n\nCadena resultante:%s\n", sre);
 
 	// SPLIT
+	printf("\n\nMy ft_split------------------\n");
+	char	**arrayes = ft_split(",,hola,como,,", ',');
+	printf("\n\nStrings resultante: %s\n", arrayes[0]);
 }
