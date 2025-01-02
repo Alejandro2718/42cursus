@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:51:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/02 18:12:53 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/02 21:24:46 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@ int	words_in_s(char *s, char c)
 	int	i;
 	int	words;
 
+	if (!s || *s == '\0')
+		return (0);
 	i = 0;
 	words = 0;
 	while (s[i] == c)
 		i++;
 	while (s[i] != '\0')
 	{
-		while (s[i] != c)
-		{
+		while (s[i] != c && s[i] != '\0')
 			i++;
-		}
-		words++;
-		while (s[i] == c)
+		if (s[i] == c || s[i] == '\0')
+			words++;
+		while (s[i] == c && s[i] != '\0')
 			i++;
 	}
 	return (words);
@@ -39,23 +40,23 @@ int	words_in_s(char *s, char c)
 
 int	each_word_len(char *s, char c, int word_num)
 {
-	int		word_len;
-	int		i;
-	int		j;
+	int	word_len;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (s[i] == c)
+	while (s[i] == c && s[i] != '\0')
 		i++;
 	j = 0;
 	while (j <= word_num)
 	{
 		word_len = 0;
-		while (s[i] != c)
+		while (s[i] != c && s[i] != '\0')
 		{
 			word_len++;
 			i++;
 		}
-		while (s[i] == c)
+		while (s[i] == c && s[i] != '\0')
 			i++;
 		j++;
 	}
@@ -67,10 +68,46 @@ char	*populate_array(char *s, char c, int word_num)
 	char	*str_in;
 	int		i;
 	int		j;
+	int		start;
+	int		p;
 
-	str_in = malloc(each_word_len(s, c, word_num) + 1);
-	while ()
+	p = each_word_len(s, c, word_num);
+	str_in = malloc(p + 1);
+	if (!str_in)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (j <= word_num)
+	{
+		while (s[i] == c)
+			i++;
+		start = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		j++;
+	}
+	i = 0;
+	while (p > 0)
+	{
+		str_in[i] = s[start + i];
+		i++;
+		p--;
+	}
+	str_in[i] = '\0';
+	return (str_in);
+}
 
+char	**special_case(char **array, char *s)
+{
+	array = malloc(2 * sizeof(char *));
+	if (!array)
+		return (NULL);
+	if (*s == '\0')
+		array[0] = NULL;
+	else
+		array[0] = strdup(s);
+	array[1] = NULL;
+	return (array);
 }
 
 char	**ft_split(char const *s, char c)
@@ -79,15 +116,25 @@ char	**ft_split(char const *s, char c)
 	int		words;
 	int		i;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
-	words = words_in_s(s, c);
-	array = malloc(words + 1);
-	// hasta aqui bien
+	if (c == '\0')
+		special_case(array, (char *)s);
+	words = words_in_s((char *)s, c);
+	array = malloc((words + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
 	i = 0;
 	while (i < words)
 	{
-		array[i] = populate_array(s, c, i);
+		array[i] = populate_array((char *)s, c, i);
+		if (!array[i])
+		{
+			while (i > 0)
+				free(array[--i]);
+			free(array);
+			return (NULL);
+		}
 		i++;
 	}
 	array[i] = NULL;
