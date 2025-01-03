@@ -70,6 +70,7 @@ int	main(void)
 	char		**rsult;
 	char		*mou;
 	char		*mous;
+	char		*mouse;
 
 	// ALPHA
 	printf("\nMY ft_isalpha---------\nIs alpha: %i TRUE\n", ft_isalpha('g'));
@@ -325,4 +326,9 @@ int	main(void)
 	mous = "hola";
 	printf("\nResultado: %s\n", ft_strmapi(mous, addOne));
 	// STRITERI
+	printf("\n\nMy ft_striteri------------------\n");
+	mouse = "hola";
+	ft_strmapi(mouse, addOne);
+	printf("\nResultado: %s\n", mouse);
+	// PUTCHAR_FD
 }
