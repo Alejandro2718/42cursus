@@ -1,6 +1,11 @@
 #include "libft.h"
 #include <stdio.h>
 
+char	addOne(unsigned int i, char c)
+{
+	return (i + c);
+}
+
 int	main(void)
 {
 	char		s[] = "Hola a todos";
@@ -63,6 +68,8 @@ int	main(void)
 	char		*si;
 	char		c;
 	char		**rsult;
+	char		*mou;
+	char		*mous;
 
 	// ALPHA
 	printf("\nMY ft_isalpha---------\nIs alpha: %i TRUE\n", ft_isalpha('g'));
@@ -305,4 +312,17 @@ int	main(void)
 		printf("Error al dividir la cadena.\n");
 	}
 	printf("\n");
+	// ITOA
+	printf("\n\nMy ft_itoa------------------\n");
+	mou = ft_itoa(-1);
+	printf("\nResultado: %s\n", mou);
+	for (int i = 0; mou[i] != '\0'; i++)
+	{
+		printf("\nCada uno: %c\n", mou[i]);
+	}
+	// STRMAPI
+	printf("\n\nMy ft_strmapi------------------\n");
+	mous = "hola";
+	printf("\nResultado: %s\n", ft_strmapi(mous, addOne));
+	// STRITERI
 }

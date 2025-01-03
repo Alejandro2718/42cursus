@@ -6,17 +6,17 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 13:19:35 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/29 18:28:36 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:18:21 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <ctype.h>
-# include <string.h>
+# include <stdio.h> //BORRAR stdio.h
 # include <stdlib.h>
+# include <string.h>
 
 int		ft_isalpha(int a);
 int		ft_isdigit(int d);
@@ -45,6 +45,9 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-char    **ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 #endif

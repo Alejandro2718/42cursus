@@ -6,12 +6,15 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:51:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/02 21:24:46 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:47:17 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-
+This function split a string gave as paramether
+based on an delimiter	character(which wont be included).
+Splits the string in as many strings as necesary.
+Return  an array of strings, ends with a NULL pointer.
 */
 #include "libft.h"
 
@@ -67,31 +70,25 @@ char	*populate_array(char *s, char c, int word_num)
 {
 	char	*str_in;
 	int		i;
-	int		j;
 	int		start;
 	int		p;
 
 	p = each_word_len(s, c, word_num);
-	str_in = malloc(p + 1);
-	if (!str_in)
-		return (NULL);
+	str_in = ft_calloc(p + 1, sizeof(char));
 	i = 0;
-	j = 0;
-	while (j <= word_num)
+	while (word_num-- >= 0)
 	{
 		while (s[i] == c)
 			i++;
 		start = i;
 		while (s[i] != c && s[i] != '\0')
 			i++;
-		j++;
 	}
 	i = 0;
-	while (p > 0)
+	while (p--)
 	{
 		str_in[i] = s[start + i];
 		i++;
-		p--;
 	}
 	str_in[i] = '\0';
 	return (str_in);
@@ -121,9 +118,7 @@ char	**ft_split(char const *s, char c)
 	if (c == '\0')
 		special_case(array, (char *)s);
 	words = words_in_s((char *)s, c);
-	array = malloc((words + 1) * sizeof(char *));
-	if (!array)
-		return (NULL);
+	array = ft_calloc(words + 1, sizeof(char *));
 	i = 0;
 	while (i < words)
 	{
