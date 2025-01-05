@@ -331,4 +331,7 @@ int	main(void)
 	ft_strmapi(mouse, addOne);
 	printf("\nResultado: %s\n", mouse);
 	// PUTCHAR_FD
+	printf("\n\nMy ft_putchar_fd------------------\n");
+	ft_putchar_fd('a', 1);
+
 }
