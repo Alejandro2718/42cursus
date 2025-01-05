@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:29:16 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/11 20:29:07 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:15:11 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ the alphabet and return (0) if not.
 */
 int	ft_isalpha(int a)
 {
-	if (a >= 'A' && a <= 'Z' || a >= 'a' && a <= 'z')
+	if ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z'))
 	{
 		return (1);
 	}

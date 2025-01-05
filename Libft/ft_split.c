@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:51:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/05 17:24:10 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:22:26 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char	*populate_array(char *s, char c, int word_num)
 
 char	**special_case(char **array, char *s)
 {
-	array = malloc(2 * sizeof(char *));
 	if (!array)
 		return (NULL);
 	if (*s == '\0')
@@ -116,7 +115,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	if (c == '\0')
-		return (special_case(array, (char *)s));
+		return (special_case(array = malloc(2 * sizeof(char *)), (char *)s));
 	words = words_in_s((char *)s, c);
 	array = ft_calloc(words + 1, sizeof(char *));
 	i = 0;

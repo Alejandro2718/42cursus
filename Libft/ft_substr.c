@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 19:31:15 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 17:13:31 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:19:38 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ passed as paramethers.
 
 char	*special_case(char *sub)
 {
-	sub = malloc(1 * sizeof(char));
 	if (!sub)
 		return (NULL);
 	sub[0] = '\0';
@@ -38,7 +37,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
+	{
+		sub = malloc(1 * sizeof(char));
 		return (special_case(sub));
+	}
 	if (len > s_len - start)
 		len = s_len - start;
 	sub = malloc(len + 1);

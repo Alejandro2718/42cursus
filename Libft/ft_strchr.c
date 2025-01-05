@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 22:25:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/27 18:22:26 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:13:48 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ of the string beginning with the searched letter
 char	*ft_strchr(const char *str, int search_str)
 {
 	int		i;
-	char	temp;
 	char	*string;
 
 	i = 0;

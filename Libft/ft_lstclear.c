@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:59:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 18:14:46 by alejjime         ###   ########.fr       */
+/*   Created: 2025/01/05 20:18:24 by alejjime          #+#    #+#             */
+/*   Updated: 2025/01/05 20:32:55 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function check if "an" is in the alphabet/number by checking
-the ascii value from A-a to Z-z or 0 to 9, return (1) if "an" is in
-the alphabet/number and return (0) if not.
+Deletes and frees the given node and every
+successor of that node, using the function ’del’
+and	free(3).
+Finally, the pointer to the list must be set to
+NULL.
 */
-int	ft_isalnum(int an)
+#include "libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if ((an >= 'A' && an <= 'Z') || (an >= 'a' && an <= 'z') || (an >= '0'
-			&& an <= '9'))
+	t_list	*temp;
+
+	if (!*lst || !del)
+		return ;
+	while (*lst != NULL)
 	{
-		return (1);
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = temp;
 	}
-	return (0);
 }

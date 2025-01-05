@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:47:58 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/03 20:44:55 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:50:13 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*min_maximus(char *string)
 char	*negative(char *string, int n, int n_num)
 {
 	int	temp;
-	int	i;
 
 	if (n == -2147483648)
 		return (min_maximus(string));
@@ -84,17 +83,15 @@ char	*ft_itoa(int n)
 	int		temp;
 	int		i;
 
+	string = NULL;
 	if (n == 0)
 		return (spe_case());
 	if (n < 0)
 		return (negative(string, n, 0));
 	n_num = 0;
 	temp = n;
-	while (n > 0)
-	{
+	while (n > 0 && ++n_num)
 		n = n / 10;
-		n_num++;
-	}
 	string = ft_calloc(n_num + 1, sizeof(char));
 	i = n_num;
 	while (n_num-- > 0)

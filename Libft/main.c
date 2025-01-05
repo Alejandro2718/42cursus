@@ -342,4 +342,12 @@ int	main(void)
 	// PUTNBR_FD
 	printf("\n\nMy ft_putnbr_fd------------------\n");
 	ft_putnbr_fd(543, 1);
+	/*
+	BONUS PART
+	*/
+	// LSTNEW
+	ft_lstnew("Hola");
+	// LSTADD_FRONT
+	// ft_lstadd_front();
+	// LSTSIZE
 }

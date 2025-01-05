@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:59:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 18:14:46 by alejjime         ###   ########.fr       */
+/*   Created: 2025/01/05 20:08:15 by alejjime          #+#    #+#             */
+/*   Updated: 2025/01/05 20:17:59 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function check if "an" is in the alphabet/number by checking
-the ascii value from A-a to Z-z or 0 to 9, return (1) if "an" is in
-the alphabet/number and return (0) if not.
+Takes as a parameter a node and frees the memory of
+the node’s content using the function ’del’ given
+as a parameter and free the node
 */
-int	ft_isalnum(int an)
+#include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if ((an >= 'A' && an <= 'Z') || (an >= 'a' && an <= 'z') || (an >= '0'
-			&& an <= '9'))
-	{
-		return (1);
-	}
-	return (0);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:59:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 18:14:46 by alejjime         ###   ########.fr       */
+/*   Created: 2025/01/05 19:44:41 by alejjime          #+#    #+#             */
+/*   Updated: 2025/01/05 20:07:33 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function check if "an" is in the alphabet/number by checking
-the ascii value from A-a to Z-z or 0 to 9, return (1) if "an" is in
-the alphabet/number and return (0) if not.
+Returns the last node of the list
 */
-int	ft_isalnum(int an)
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	if ((an >= 'A' && an <= 'Z') || (an >= 'a' && an <= 'z') || (an >= '0'
-			&& an <= '9'))
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
 	{
-		return (1);
+		lst = lst->next;
 	}
-	return (0);
+	return (lst);
 }
