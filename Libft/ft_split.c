@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 17:51:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/03 17:47:17 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:24:10 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	**special_case(char **array, char *s)
 	if (*s == '\0')
 		array[0] = NULL;
 	else
-		array[0] = strdup(s);
+		array[0] = ft_strdup(s);
 	array[1] = NULL;
 	return (array);
 }
@@ -116,7 +116,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	if (c == '\0')
-		special_case(array, (char *)s);
+		return (special_case(array, (char *)s));
 	words = words_in_s((char *)s, c);
 	array = ft_calloc(words + 1, sizeof(char *));
 	i = 0;

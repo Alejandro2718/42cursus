@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 21:33:57 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 16:29:15 by alejjime         ###   ########.fr       */
+/*   Created: 2025/01/05 16:40:04 by alejjime          #+#    #+#             */
+/*   Updated: 2025/01/05 17:35:47 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-This function outputs a character
-in the given files descriptor 'fd'
+Outputs the integer ’n’ to the given file
+descriptor.
 */
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(fd, &c, 1);
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = ft_itoa(n);
+	while (str[i] != '\0')
+	{
+		write(fd, &str[i], 1);
+		i++;
+	}
+	free(str);
 }

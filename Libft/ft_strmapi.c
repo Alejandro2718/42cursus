@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 20:45:36 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/03 21:25:36 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:28:21 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s || !f)
 		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
+	i = ft_strlen(s);
 	new_str = malloc(i + 1);
-	if (new_str == NULL)
+	if (!new_str)
 		return (NULL);
-	new_str[i + 1] = '\0';
 	i = 0;
 	while (s[i] != '\0')
 	{
 		new_str[i] = f(i, s[i]);
 		i++;
 	}
+	new_str[i] = '\0';
 	return (new_str);
 }

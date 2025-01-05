@@ -333,5 +333,13 @@ int	main(void)
 	// PUTCHAR_FD
 	printf("\n\nMy ft_putchar_fd------------------\n");
 	ft_putchar_fd('a', 1);
-
+	// PUTSTR_FD
+	printf("\n\nMy ft_putstr_fd------------------\n");
+	ft_putstr_fd("Hola", 1);
+	// PUTENDL_FD
+	printf("\n\nMy ft_putendl_fd------------------\n");
+	ft_putendl_fd("Hola", 1);
+	// PUTNBR_FD
+	printf("\n\nMy ft_putnbr_fd------------------\n");
+	ft_putnbr_fd(543, 1);
 }
