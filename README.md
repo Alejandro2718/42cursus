@@ -1,6 +1,7 @@
 # 42 Common Core Projects:
 
-This is the repository with the projects carried out during my studies in 42 Warsaw 
+This is the repository with the projects carried out during my studies in 42 Warsaw
+by [Alejandro Jimenez](https://www.linkedin.com/in/alejandro-jimenez2718/)
 
 ## 1. Libft
 This is the very first project when starting at 42 Warsaw.
