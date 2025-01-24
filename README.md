@@ -9,6 +9,6 @@ It consists of creating a library from scratch, entirely in the C language.
 I had to recode general-purpose functions to understand how they work and learn how to use them.
 This library will be used in future projects within the common core.
 
-#### => [Functions Explanation](https://github.com/Alejandro2718/42cursus)
+#### => [Functions Explanation](https://github.com/Alejandro2718/42cursus/tree/main/Libft)
 
 ## 2. Born2beRoot
