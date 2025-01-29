@@ -6,13 +6,13 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 15:06:38 by alejjime          #+#    #+#              #
-#    Updated: 2025/01/26 16:04:00 by alejjime         ###   ########.fr        #
+#    Updated: 2025/01/29 17:01:16 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c ft_printf_convertions.c
+SRCS = ft_printf.c ft_printf_convertions.c ft_numeric_cases.c
 
 OBJS = $(SRCS:.c=.o)
 
