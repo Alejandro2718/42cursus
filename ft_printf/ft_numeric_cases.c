@@ -6,14 +6,16 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:54:49 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/30 19:25:28 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:59:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-char	*min_maximus(char *string)
+char	*min_maximus(void)
 {
+	char	*string;
+
 	string = malloc(12);
 	if (!string)
 		return (NULL);
@@ -43,12 +45,14 @@ void	negative_case(int *n, int *neg)
 		*neg = 0;
 }
 
-int	leng(int i, int base, int len)
+int	leng(unsigned long long n, int base)
 {
-	i /= base;
-	while (i)
+	int	len;
+
+	len = 0;
+	while (n >= (unsigned long long)base)
 	{
-		i /= base;
+		n /= base;
 		len++;
 	}
 	return (len);
@@ -62,18 +66,19 @@ char	*ft_itoa_base(int n, int base, char *hex)
 	int		len;
 
 	len = 0;
+	str = NULL;
 	if (n == -2147483648)
-		return (min_maximus(str));
+		return (min_maximus());
 	negative_case(&n, &neg);
 	i = n;
-	len = leng(i, base, len);
+	len = leng(i, base);
 	len += neg + 1;
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	str[len] = '\0';
 	if (neg)
 		str[0] = '-';
+	str[len] = '\0';
 	while (len-- > neg)
 	{
 		str[len] = hex[n % base];
