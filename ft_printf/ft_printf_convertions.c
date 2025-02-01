@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 15:48:26 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/31 20:37:19 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:41:42 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	if (!s)
-		return (0);
+		s = "(null)";
 	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);

@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:49:10 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/31 19:55:26 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:33:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ int	ft_printf(const char *string, ...)
 			if (string[i] == '\0')
 				break ;
 		}
-		len += print_char(string[i]);
-		i++;
+		else
+		{
+			len += print_char(string[i]);
+			i++;
+		}
 	}
 	va_end(args);
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 19:37:05 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/31 20:14:07 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:47:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,28 @@ char	*ft_strrev(char *str)
 	return (str);
 }
 
+int	leng_for_hex(unsigned long long n, int base)
+{
+	int	len;
+
+	if (n == 0)
+		return (1);
+	len = 0;
+	while (n)
+	{
+		n /= base;
+		len++;
+	}
+	return (len);
+}
+
 char	*ft_itoa_hex(unsigned long long n, int base, char *hex)
 {
 	char	*str;
 	int		i;
 	int		len;
 
-	len = leng(n, base);
+	len = leng_for_hex(n, base);
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
@@ -67,6 +82,11 @@ int	print_p_hex(char *s, va_list args)
 	int					len;
 
 	n = (unsigned long long)va_arg(args, void *);
+	if (!n)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
 	s = ft_itoa_hex(n, 16, "0123456789abcdef");
 	len = ft_putstr_fd("0x", 1);
 	len += ft_putstr_fd(s, 1);
