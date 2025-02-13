@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:13 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/10 12:55:18 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:53:27 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
+char	*ft_clean_mem(char *str);
+void	*ft_memset(void *str, int c, size_t n);
 
 #endif

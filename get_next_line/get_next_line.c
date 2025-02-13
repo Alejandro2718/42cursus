@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/10 14:06:25 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:53:35 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,54 +16,64 @@
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static char		*buffer;
-	static int		position;
-	static size_t	bytes_read;
+	char			*buffer;
+	static size_t	bytes_read = 1;
+	static int		position = 0;
 	int				i;
 
-	if (position == 0)
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (ft_clean_mem(buffer));
+	ft_memset(buffer, 0, BUFFER_SIZE + 1);
+	if ((size_t)position >= bytes_read)
+		position = 0;
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		buffer = malloc(BUFFER_SIZE);
-		if (!buffer)
-			return (NULL);
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		buffer[bytes_read] = '\0';
-		if ((int)bytes_read == -1)
+		// printf("buffer: %s\n", buffer);
+		i = 0;
+		if (position == 0)
 		{
-			free(buffer);
-			return (NULL);
-		}
-	}
-	line = malloc(bytes_read + 1);
-	if (!line)
-	{
-		free(buffer);
-		free(line);
-		printf("Fallo line\n");
-		return (NULL);
-	}
-	i = 0;
-	while (position <= bytes_read)
-	{
-		if (buffer[position] == '\n' || buffer[position] == '\0')
-		{
-			if (buffer[position] == '\n')
+			// bytes_read = read(fd, buffer, BUFFER_SIZE);
+			// printf("\nCuando position = %i\nbuffer: %s\nbytes_read = %zu",
+			// 	position, buffer, bytes_read);
+			if (bytes_read == (size_t)(0))
 			{
+				line = malloc(2);
 				line[i] = '\n';
 				line[i + 1] = '\0';
+				free(buffer);
+				return (line);
 			}
-			else
-			{
-				line[i] = '\0';
-			}
-			position++;
-			return (line);
+			if (bytes_read == (size_t)(-1))
+				return (ft_clean_mem(buffer));
+			buffer[bytes_read] = '\0';
 		}
-		line[i] = buffer[position];
-		i++;
-		position++;
+		line = malloc(bytes_read + 1);
+		if (!line)
+			return (ft_clean_mem(line));
+		i = 0;
+		while ((size_t)position < bytes_read + 1)
+		{
+			if (buffer[position] == '\n' || buffer[position] == '\0')
+			{
+				if (buffer[position] == '\n')
+				{
+					line[i] = '\n';
+					line[i + 1] = '\0';
+					position++;
+					free(buffer);
+					return (line);
+				}
+				else
+				{
+					line[i] = '\0';
+					free(buffer);
+					return (line);
+				}
+			}
+			line[i++] = buffer[position++];
+		}
 	}
 	free(buffer);
-	free(line);
 	return (NULL);
 }
