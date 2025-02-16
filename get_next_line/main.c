@@ -21,7 +21,7 @@ int	main(void)
 	fd = open("prueba.txt", O_RDONLY);
 	for (int i = 0; i < 1; i++)
 	{
-		printf("\n\n\n\n%s\n", get_next_line(fd));
+		printf("\n\n%s\n", get_next_line(fd));
 	}
 	close(fd);
 	return (0);
