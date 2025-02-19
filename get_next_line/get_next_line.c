@@ -6,68 +6,67 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/13 16:53:35 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:33:25 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    char *line;
-    static char *buffer = NULL;
-    static int position = 0;
-    static ssize_t bytes_read = 0;
-    int i = 0;
+	char			*line;
+	static char		buffer[BUFFER_SIZE];
+	static int		position;
+	static ssize_t	bytes_read;
+	int				i;
 
-    if (!buffer)
-    {
-        buffer = malloc(BUFFER_SIZE + 1);
-        if (!buffer)
-            return (NULL);
-        bytes_read = read(fd, buffer, BUFFER_SIZE);
-        if (bytes_read <= 0)
-        {
-            free(buffer);
-            buffer = NULL;
-            return (NULL);
-        }
-        buffer[bytes_read] = '\0';
-    }
-    /* Allocate only enough memory for the remainder of the buffer */
-    line = malloc((bytes_read - position) + 1);
-    if (!line)
-    {
-        free(buffer);
-        buffer = NULL;
-        return (NULL);
-    }
-    while (position < bytes_read)
-    {
-        line[i] = buffer[position];
-        if (buffer[position] == '\n')
-        {
-            i++;
-            position++;
-            line[i] = '\0';
-            /* If we’ve reached the end of the buffer, free it */
-            if (position >= bytes_read)
-            {
-                free(buffer);
-                buffer = NULL;
-                position = 0;
-            }
-            return (line);
-        }
-        i++;
-        position++;
-    }
-    line[i] = '\0';
-    /* End of file reached: free the static buffer */
-    free(buffer);
-    buffer = NULL;
-    position = 0;
-    return (line);
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &buffer, 0) < 0)
+		return (NULL);
+	if (position == 0)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == (ssize_t)(-1))
+		{
+			return (NULL);
+		}
+	}
+	if (buffer[0] == '\0')
+		return (NULL);
+	// if (buffer[0] == '\n' && buffer[1] == '\0')
+	// {
+	// 	line = malloc(2);
+	// 	line[0] = '\n';
+	// 	line[1] = '\0';
+	// 	return (line);
+	// }
+	line = malloc(bytes_read + 1);
+	if (!line)
+	{
+		position = 0;
+		return (NULL);
+	}
+	i = 0;
+	while ((ssize_t)position < bytes_read && buffer[position])
+	{
+		if (buffer[position] == '\n')
+		{
+			line[i] = '\n';
+			line[i + 1] = '\0';
+			position++;
+			return (line);
+		}
+		else if (buffer[position] == '\0')
+		{
+			line[i] = '\0';
+			return (line);
+		}
+		line[i++] = buffer[position++];
+	}
+	if ((ssize_t)position >= bytes_read)
+	{
+		position = 0;
+	}
+	line[i] = '\0';
+	return (line);
 }
-

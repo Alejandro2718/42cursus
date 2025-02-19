@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:13 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/13 16:53:27 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:47:01 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 char	*get_next_line(int fd);
 char	*ft_clean_mem(char *str);
 void	*ft_memset(void *str, int c, size_t n);
+char	*ft_strchr(char *s, int c);
 
 #endif
