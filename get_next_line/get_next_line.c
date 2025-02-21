@@ -22,28 +22,31 @@ char	*get_next_line(int fd)
 	int				i;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &buffer, 0) < 0)
+	{
+		printf("Primera condicion NULL:\n");
 		return (NULL);
+	}	
+	
 	if (position == 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		buffer[bytes_read] = '\0';
 		if (bytes_read == (ssize_t)(-1))
 		{
+			printf(" bytes -1 NULL:\n");
 			return (NULL);
 		}
 	}
 	if (buffer[0] == '\0')
+	{
+		printf(" buffer[0] == 0 NULL:\n");
 		return (NULL);
-	// if (buffer[0] == '\n' && buffer[1] == '\0')
-	// {
-	// 	line = malloc(2);
-	// 	line[0] = '\n';
-	// 	line[1] = '\0';
-	// 	return (line);
-	// }
+	}
 	line = malloc(bytes_read + 1);
 	if (!line)
 	{
 		position = 0;
+		printf(" !line NULL:\n");
 		return (NULL);
 	}
 	i = 0;
@@ -54,11 +57,13 @@ char	*get_next_line(int fd)
 			line[i] = '\n';
 			line[i + 1] = '\0';
 			position++;
+			printf(" n Return:\n");
 			return (line);
 		}
 		else if (buffer[position] == '\0')
 		{
 			line[i] = '\0';
+			printf(" 0 Return:\n");
 			return (line);
 		}
 		line[i++] = buffer[position++];
@@ -68,5 +73,6 @@ char	*get_next_line(int fd)
 		position = 0;
 	}
 	line[i] = '\0';
+	printf("Ultimo return de programa:\n");
 	return (line);
 }
