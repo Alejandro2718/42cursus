@@ -6,46 +6,49 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:19 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/17 19:45:56 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:06:23 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-char	*ft_clean_mem(char *str)
-{
-	if (str != NULL)
-		free(str);
-	return (NULL);
-}
+// char	*get_line(char *buffer, ssize_t position, ssize_t bytes_read)
+// {
+// 	char	*line;
+// 	int		i;
 
-void	*ft_memset(void *str, int c, size_t n)
-{
-	size_t			i;
-	unsigned char	*s;
-
-	s = (unsigned char *)str;
-	i = 0;
-	while (i < n)
-	{
-		s[i] = (unsigned char)c;
-		i++;
-	}
-	return (str);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return (&((char *)s)[i]);
-		i++;
-	}
-	if ((char)c == '\0')
-		return (&((char *)s)[i]);
-	return (0);
-}
+// 	line = malloc(bytes_read + 1);
+// 	if (!line)
+// 	{
+// 		position = 0;
+// 		printf("line NULL:\n");
+// 		return (NULL);
+// 	}
+// 	i = 0;
+// 	while (position < bytes_read)
+// 	{
+// 		if (buffer[position] == '\n')
+// 		{
+// 			line[i] = '\n';
+// 			line[i + 1] = '\0';
+// 			position++;
+// 			printf(" n Return:\n");
+// 			return (line);
+// 		}
+// 		else if (buffer[position] == '\0')
+// 		{
+// 			line[i] = '\0';
+// 			printf(" 0 Return:\n");
+// 			return (line);
+// 		}
+// 		line[i++] = buffer[position++];
+// 	}
+// 	if (position >= bytes_read)
+// 	{
+// 		position = 0;
+// 	}
+// 	line[i] = '\0';
+// 	printf("Ultimo returnde programa:\n");
+// 	return (line);
+// }

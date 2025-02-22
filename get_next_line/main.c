@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:45:37 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/19 18:34:53 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:24:54 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 
 int	main(void)
 {
-	int	fd;
+	int		fd;
+	char	*line;
 
+	// int		i;
+	// ssize_t	bytes;
+	// char	*line;
 	fd = open("prueba.txt", O_RDONLY);
-	// printf("\n\n\n");
-	for (int i = 0; i < 5; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
-		printf("%s", get_next_line(fd));
+		line = malloc(100);
+		line = get_next_line(fd);
+		printf("\nline: %s", line);
+		free(line);
 	}
-	// printf("\n");
 	close(fd);
 	return (0);
 }
