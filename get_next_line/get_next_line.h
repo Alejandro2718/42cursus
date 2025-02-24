@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:13 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/22 18:26:24 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:44:16 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-char	get_char(int fd);
 
 #endif
