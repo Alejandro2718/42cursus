@@ -6,79 +6,58 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/26 16:17:17 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:12:04 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-char	get_car(int fd, char *buffer)
+static char	*malloc_buffer(char **buffer)
 {
-	static int	index = 0;
-	static int	bytes_read = 0;
-	char		car;
-
-	if (index >= bytes_read)
-	{
-		bytes_read = read(fd, buffer, 1);
-		if (bytes_read <= 0)
-		{
-			return (0);
-		}
-		index = 0;
-	}
-	car = buffer[index];
-	index++;
-	return (car);
+	*buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!*buffer)
+		return (NULL);
+	return (*buffer);
 }
 
-char	*create_line(int fd, char *buffer)
+static char	*save_in_storage(int fd, char *storage, int bytes_read)
 {
-	char	*line;
-	int		y;
-	char	car;
+	char	*buffer;
 
-	line = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!line)
+	if (!malloc_buffer(&buffer))
 		return (NULL);
-	y = 0;
-	while ((car = get_car(fd, buffer)) && y < BUFFER_SIZE)
+	while (bytes_read > 0 && !ft_strchr(storage, '\n'))
 	{
-		line[y++] = car;
-		if (car == '\n')
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
-			line[y] = '\0';
-			return (line);
+			free(buffer);
+			if (storage)
+				free(storage);
+			return (NULL);
+		}
+		buffer[bytes_read] = '\0';
+		storage = ft_strjoin(storage, buffer);
+		if (!storage)
+		{
+			free(buffer);
+			return (NULL);
 		}
 	}
-	if (y > 0)
-	{
-		line[y] = '\0';
-		return (line);
-	}
-	free(line);
-	return (NULL);
+	free(buffer);
+	return (storage);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer = NULL;
+	static char	*storage;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
-	{
-		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-		if (!buffer)
-			return (NULL);
-	}
-	line = create_line(fd, buffer);
-	if (!line)
-	{
-		free(buffer);
-		buffer = NULL;
-	}
-	return (line);
+	storage = save_in_storage(fd, storage, 1);
+	if (!storage)
+		return (NULL);
 }
