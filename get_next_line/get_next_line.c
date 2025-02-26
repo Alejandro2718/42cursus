@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/24 16:43:42 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:17:17 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@ char	get_car(int fd, char *buffer)
 	static int	bytes_read = 0;
 	char		car;
 
-	// car = malloc(sizeof(char));
-	// if (!car)
-	// 	return (NULL);
 	if (index >= bytes_read)
 	{
 		bytes_read = read(fd, buffer, 1);
 		if (bytes_read <= 0)
 		{
-			// free(car);
 			return (0);
 		}
 		index = 0;
@@ -47,10 +43,9 @@ char	*create_line(int fd, char *buffer)
 	if (!line)
 		return (NULL);
 	y = 0;
-	while ((car = get_car(fd, buffer)))
+	while ((car = get_car(fd, buffer)) && y < BUFFER_SIZE)
 	{
 		line[y++] = car;
-		// free(car);
 		if (car == '\n')
 		{
 			line[y] = '\0';
@@ -80,7 +75,6 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	line = create_line(fd, buffer);
-	// Free buffer only if no more lines can be read
 	if (!line)
 	{
 		free(buffer);
