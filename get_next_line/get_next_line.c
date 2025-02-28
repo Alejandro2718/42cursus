@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/26 18:12:04 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:50:56 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*save_in_storage(int fd, char *storage, int bytes_read)
 
 	if (!malloc_buffer(&buffer))
 		return (NULL);
-	while (bytes_read > 0 && !ft_strchr(storage, '\n'))
+	while (bytes_read > 0 && (!storage || !ft_strchr(storage, '\n')))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -50,6 +50,44 @@ static char	*save_in_storage(int fd, char *storage, int bytes_read)
 	return (storage);
 }
 
+static char	*get_line(char *storage)
+{
+	char	*line;
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	if (!storage || !storage[i])
+		return (NULL);
+	while (storage[i] && storage[i] != '\n')
+		i++;
+	len = i;
+	if (storage[i] == '\n')
+		len++;
+	line = ft_substr(storage, 0, len);
+	return (line);
+}
+
+static char	*upd_storage(char *storage)
+{
+	char	*new_stor;
+	size_t	i;
+
+	i = 0;
+	if (!storage)
+		return (NULL);
+	while (storage[i] && storage[i] != '\n')
+		i++;
+	if (!storage[i])
+	{
+		free(storage);
+		return (NULL);
+	}
+	new_stor = ft_substr(storage, i + 1, ft_strlen(storage) - i - 1);
+	free(storage);
+	return (new_stor);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*storage;
@@ -60,4 +98,7 @@ char	*get_next_line(int fd)
 	storage = save_in_storage(fd, storage, 1);
 	if (!storage)
 		return (NULL);
+	line = get_line(storage);
+	storage = upd_storage(storage);
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:19 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/26 17:13:35 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/28 15:54:50 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ size_t	ft_strlen(char *str)
 	size_t	i;
 
 	i = 0;
-	if (!str) /* Comprobación de seguridad para str NULL */
+	if (!str)
 		return (0);
-	while (str[i]) /* Incrementamos i hasta encontrar el carácter nulo */
+	while (str[i])
 		i++;
 	return (i);
 }
@@ -43,15 +43,13 @@ size_t	ft_strlen(char *str)
  */
 char	*ft_strchr(char *s, int c)
 {
-	if (!s) /* Comprobación de seguridad para s NULL */
-		return (NULL);
+	return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c) /* Compara cada carácter con c */
 			return ((char *)s);
 		s++;
 	}
-	/* También comprobamos el carácter nulo (por si c es '\0') */
 	if (*s == (char)c)
 		return ((char *)s);
 	return (NULL);
@@ -76,23 +74,20 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
-	/* Ajustamos len si start está fuera de la cadena o si len es mayor que el resto */
 	if (start >= s_len)
 		len = 0;
 	if (len > s_len - start)
 		len = s_len - start;
-	/* Asignamos memoria para la subcadena */
 	substr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
-	/* Copiamos los caracteres de s a substr */
 	i = 0;
 	while (i < len && s[start + i])
 	{
 		substr[i] = s[start + i];
 		i++;
 	}
-	substr[i] = '\0'; /* Añadimos el carácter nulo al final */
+	substr[i] = '\0';
 	return (substr);
 }
 
@@ -101,11 +96,10 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
  * Crea una nueva cadena con s1 y s2 concatenadas
  * Esta función se divide en dos para cumplir con el límite de 25 líneas
  */
-static char	*ft_strjoin_part1(char *s1, char *s2, size_t s1_len, size_t s2_len)
+static char	*ft_strjoin_part1(size_t s1_len, size_t s2_len)
 {
 	char	*joined;
 
-	/* Asignamos memoria para la cadena resultante */
 	joined = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!joined)
 		return (NULL);
@@ -123,35 +117,40 @@ static char	*ft_strjoin_part1(char *s1, char *s2, size_t s1_len, size_t s2_len)
  */
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char *joined;
-	size_t i, j;
-	size_t s1_len, s2_len;
+	char	*joined;
+	size_t	i;
+	size_t	j;
+	size_t	s1_len;
+	size_t	s2_len;
 
+	if (!s1)
+	{
+		s1 = (char *)malloc(sizeof(char));
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
+	}
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-
-	joined = ft_strjoin_part1(s1, s2, s1_len, s2_len);
+	joined = ft_strjoin_part1(s1_len, s2_len);
 	if (!joined)
+	{
+		free(s1);
 		return (NULL);
-
-	/* Copiamos s1 a joined */
+	}
 	i = 0;
 	while (i < s1_len)
 	{
 		joined[i] = s1[i];
 		i++;
 	}
-
-	/* Copiamos s2 después de s1 en joined */
 	j = 0;
 	while (j < s2_len)
 	{
 		joined[i + j] = s2[j];
 		j++;
 	}
-	joined[i + j] = '\0'; /* Añadimos el carácter nulo al final */
-
-	if (s1) /* Liberamos s1 (importante para evitar pérdidas de memoria) */
-		free(s1);
+	joined[i + j] = '\0';
+	free(s1);
 	return (joined);
 }
