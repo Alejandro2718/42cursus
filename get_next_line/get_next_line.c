@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:25:25 by alejjime          #+#    #+#             */
-/*   Updated: 2025/02/28 15:50:56 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/02/28 18:51:20 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static char	*malloc_buffer(char **buffer)
-{
-	*buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!*buffer)
-		return (NULL);
-	return (*buffer);
-}
-
 static char	*save_in_storage(int fd, char *storage, int bytes_read)
 {
 	char	*buffer;
 
-	if (!malloc_buffer(&buffer))
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (NULL);
 	while (bytes_read > 0 && (!storage || !ft_strchr(storage, '\n')))
 	{
@@ -39,7 +32,7 @@ static char	*save_in_storage(int fd, char *storage, int bytes_read)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		storage = ft_strjoin(storage, buffer);
+		storage = ft_strjoin(storage, buffer, -1);
 		if (!storage)
 		{
 			free(buffer);
