@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 13:19:35 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 20:38:15 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:56:57 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # include <ctype.h>
-# include <stdio.h> //BORRAR stdio.h
+# include <stdarg.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -49,7 +49,6 @@ char				*ft_strnstr(const char *big, const char *little,
 int					ft_atoi(const char *str);
 char				*ft_strdup(const char *s);
 void				*ft_calloc(size_t nmemb, size_t size);
-char				*ft_strdup(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -71,5 +70,16 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+int					ft_printf(const char *string, ...);
+int					print_convertion(char *s, va_list args);
+int					print_char(char a);
+int					ft_putsprint_fd(char *s, int fd);
+char				*ft_itoa_base(int n, int base, char *hex);
+int					print_p_hex(char *s, va_list args);
+int					leng(unsigned long long n, int base);
+char				*ft_strrev(char *str);
+int					print_x_hex(char *s, va_list args, char *base);
+int					print_u(char *s, va_list args);
 
 #endif

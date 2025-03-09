@@ -6,7 +6,16 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:40:45 by alejjime          #+#    #+#             */
-/*   Updated: 2025/03/05 16:40:45 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/03/09 16:01:57 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Libft/libft.h"
+
+int	main(int argc, char **argv)
+{
+	for (int i = 1; i < argc; i++)
+	{
+		ft_printf("%s\n", argv[i]);
+	}
+}
