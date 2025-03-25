@@ -13,25 +13,34 @@
 #include "Libft/libft.h"
 #include <signal.h>
 
-void	get_message_from_client(int sig)
+void	get_1(int sig)
 {
-	if (sig == 10)
-		ft_printf("message from client received: 0\n");
-	else if (sig == 12)
+	if (sig == SIGUSR1)
 		ft_printf("message from client received: 1\n");
+	
+}
+
+void	get_2(int sig)
+{
+	if (sig == SIGUSR2)
+		ft_printf("message from client received: 0\n");
+	
 }
 
 int	main(void)
 {
 	int	server_pid;
 
-	struct sigaction action;
-  	action.sa_handler = get_message_from_client;
-  	sigemptyset(&action.sa_mask);
-  	action.sa_flags = 0;
+	struct sigaction action_1, action_2;
+	action_1.sa_handler = get_1;
+	action_2.sa_handler = get_2;
+  	sigemptyset(&action_1.sa_mask);
+	sigemptyset(&action_2.sa_mask);
+  	action_1.sa_flags = 0;
+	action_2.sa_flags = 0;
 
-	sigaction(SIGUSR1, &action, NULL);
-	sigaction(SIGUSR2, &action, NULL);
+	sigaction(SIGUSR1, &action_1, NULL);
+	sigaction(SIGUSR2, &action_2, NULL);
 
 	server_pid = getpid();
 	ft_printf("PID: %i\n", server_pid);
