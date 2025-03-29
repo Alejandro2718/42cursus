@@ -26,7 +26,7 @@ void print_binary(int pid, unsigned char ch) {
         }
         
         // Add a small delay between signals to ensure they are processed
-        usleep(100000);  // 100ms delay
+        usleep(100);  // 100ms delay
     }
 }
 
