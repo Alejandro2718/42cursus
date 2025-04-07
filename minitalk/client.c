@@ -14,33 +14,36 @@
 #include <signal.h>
 #include <unistd.h>
 
+void	confirmation_handler(int signum)
+{
+    if (signum == SIGUSR1)
+	{
+		ft_printf("Mensaje received from server!\n");
+		exit(0);
+	}
+}
+
 void	print_binary(int pid, unsigned char ch)
 {
-	int	bit_signal;
 	int	i;
 
 	i = 7;
 	while (i >= 0)
 	{
 		if ((ch & (1 << i)) != 0)
-		{
-			bit_signal = 1;
 			kill(pid, SIGUSR1);
-		}
 		else
-		{
-			bit_signal = 0;
 			kill(pid, SIGUSR2);
-		}
-		usleep(1000);
+		usleep(100);
 		i--;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	char *message;
-	int server_pid;
+	char	*message;
+	int		server_pid;
+	struct sigaction sa;
 
 	if (argc != 3 || !argv[2])
 	{
@@ -51,6 +54,12 @@ int	main(int argc, char **argv)
 	server_pid = ft_atoi(argv[1]);
 	message = argv[2];
 
+	// Configurar el manejador para la confirmación del servidor
+	sa.sa_handler = confirmation_handler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGUSR1, &sa, NULL);
+
 	ft_printf("Server PID: %i\n", server_pid);
 	ft_printf("Message sent: %s\n", message);
 
@@ -59,6 +68,10 @@ int	main(int argc, char **argv)
 		print_binary(server_pid, *message);
 		message++;
 	}
+	// Envía el carácter nulo para indicar fin de mensaje
+	print_binary(server_pid, '\0');
 
+	// Espera la confirmación del servidor
+	pause();
 	return (0);
 }
