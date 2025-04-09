@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:40:45 by alejjime          #+#    #+#             */
-/*   Updated: 2025/04/02 17:25:48 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:56:37 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	confirmation_handler(int signum)
 {
-    if (signum == SIGUSR1)
+	if (signum == SIGUSR1)
 	{
 		ft_printf("Mensaje received from server!\n");
 		exit(0);
@@ -41,37 +41,29 @@ void	print_binary(int pid, unsigned char ch)
 
 int	main(int argc, char **argv)
 {
-	char	*message;
-	int		server_pid;
-	struct sigaction sa;
+	struct sigaction	sa;
+	char				*message;
+	int					server_pid;
 
 	if (argc != 3 || !argv[2])
 	{
 		ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
 		return (1);
 	}
-
 	server_pid = ft_atoi(argv[1]);
 	message = argv[2];
-
-	// Configurar el manejador para la confirmación del servidor
 	sa.sa_handler = confirmation_handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sa, NULL);
-
 	ft_printf("Server PID: %i\n", server_pid);
 	ft_printf("Message sent: %s\n", message);
-
 	while (*message)
 	{
 		print_binary(server_pid, *message);
 		message++;
 	}
-	// Envía el carácter nulo para indicar fin de mensaje
 	print_binary(server_pid, '\0');
-
-	// Espera la confirmación del servidor
 	pause();
 	return (0);
 }

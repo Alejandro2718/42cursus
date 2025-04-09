@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 13:19:35 by alejjime          #+#    #+#             */
-/*   Updated: 2025/03/09 14:56:57 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:08:01 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <signal.h>
 
 typedef struct s_list
 {
