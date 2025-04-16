@@ -6,7 +6,7 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/11 13:52:46 by alejjime          #+#    #+#              #
-#    Updated: 2025/04/11 15:31:52 by alejjime         ###   ########.fr        #
+#    Updated: 2025/04/14 14:03:32 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,6 @@ MLX = minilibx
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
-# Detect operating system for proper linking
-UNAME := $(shell uname)
 
 all: $(NAME)
 
