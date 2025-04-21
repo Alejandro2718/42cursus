@@ -6,12 +6,12 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/11 13:52:46 by alejjime          #+#    #+#              #
-#    Updated: 2025/04/14 14:03:32 by alejjime         ###   ########.fr        #
+#    Updated: 2025/04/21 18:05:23 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
-SRCS = fractol.c
+SRCS = fractol.c fractol_utils.c
 OBJ = $(SRCS:.c=.o)
 LIB = Libft
 MLX = minilibx
