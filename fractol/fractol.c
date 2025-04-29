@@ -11,36 +11,20 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	main(void)
+/*
+	Two possible prompts:
+		./fractol mandelbrot
+		./fractol julia <r> <i>
+*/
+int	main(int argc, char **argv)
 {
-	t_data	img;
-	void	*mlx;
-	void	*mlx_win;
-	double	re;
-	double	im;
-	int		color;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Fract-ol");
-	img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	// Draw visualization to demonstrate complex plane mapping
-	for (int y = 0; y < WINDOW_HEIGHT; y++)
+	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) || (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		for (int x = 0; x < WINDOW_WIDTH; x++)
-		{
-			// Map pixel coordinates to complex plane
-			re = map_pixel_to_real(x, WINDOW_WIDTH);
-			im = map_pixel_to_imag(y, WINDOW_HEIGHT);
-			// Create a color based on complex coordinates
-			color = map_complex_to_color(re, im);
-			// Put pixel on the image
-			ft_put_pixel(&img, x, y, color);
-		}
+		ft_printf("is ok!\n");// Test
+		
 	}
-	// Display the image
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	else
+	{
+		ft_printf("is wrong!\n");// Test
+	}
 }
