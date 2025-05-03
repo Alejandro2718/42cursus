@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 18:04:50 by alejjime          #+#    #+#             */
-/*   Updated: 2025/04/30 18:54:41 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/05/03 17:51:37 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ static void	malloc_error(void)
 {
 	perror("Malloc problems");
 	exit(EXIT_FAILURE);
+}
+
+void	data_init(t_fractol *fractol)
+{
+	fractol->escape_value = 4;
+	fractol->iterations_definition = 42;
 }
 
 void	fractol_init(t_fractol *fractol)
@@ -44,5 +50,5 @@ void	fractol_init(t_fractol *fractol)
 			&fractol->img.bits_p_pixel, &fractol->img.line_len,
 			&fractol->img.endian);
 	// events_init(fractol);// POR HACER
-	// data_init(fractol);// POR HACER
+	data_init(fractol); // POR HACER
 }

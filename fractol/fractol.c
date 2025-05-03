@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:08 by alejjime          #+#    #+#             */
-/*   Updated: 2025/04/30 18:55:21 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/05/03 15:41:08 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		*/
 		fractol.name = argv[1];
 		fractol_init(&fractol);
-		// fractol_render(&fractol); // POR HACER
+		fractol_render(&fractol); // POR HACER
 		mlx_loop(fractol.mlx_connec);
 	}
 	else
