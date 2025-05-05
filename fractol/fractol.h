@@ -23,6 +23,7 @@
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
+# define PURPLE 0xc842f5
 
 typedef struct s_complex
 {

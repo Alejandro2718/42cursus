@@ -12,7 +12,17 @@
 
 #include "fractol.h"
 
-void	handle_pixel(int x, int y, t_fractol *fractol)
+static void my_pixel_put(int x, int y, t_img *img, int color)
+{
+	int offset;
+
+	(void)color;
+
+	offset = (y * img->line_len) + (x * (img->bits_p_pixel / 8));
+	color = *(unsigned int *)(img->pixel_pit + offset);
+}
+
+static void	handle_pixel(int x, int y, t_fractol *fractol)
 {
 	t_complex	z;
 	t_complex	c;
@@ -30,10 +40,12 @@ void	handle_pixel(int x, int y, t_fractol *fractol)
 		if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
 		{
 			color = map(i, BLACK, WHITE, 0, fractol->iterations_definition);
-			my_pixel_put(); // POR HACER
+			my_pixel_put(x, y, &fractol->img, color);
 			return ;
 		}
+		++i;
 	}
+	my_pixel_put(x, y, &fractol->img, PURPLE);
 }
 /*
 Mandelbrot set exist between:
@@ -55,4 +67,5 @@ void	fractol_render(t_fractol *fractol)
 			handle_pixel(x, y, fractol);
 		}
 	}
+	mlx_put_image_to_window(fractol->mlx_connec, fractol->mlx_window, fractol->img.img_pit, 0, 0);
 }
