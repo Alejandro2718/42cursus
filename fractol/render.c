@@ -32,8 +32,8 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map(x, -2, +2, 0, WINDOW_WIDTH);
-	c.y = map(x, +2, -2, 0, WINDOW_HEIGHT);
+	c.x = (map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
+	c.y = (map(x, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
 	while (i < fractol->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
