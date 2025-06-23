@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 		fractol_init(&fractol);
 		fractol_render(&fractol);
 		mlx_loop(fractol.mlx_connec);
-		// video 1:55:43 
 	}
 	else
 	{
