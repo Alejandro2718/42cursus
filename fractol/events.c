@@ -48,3 +48,14 @@ int mouse_handler(int button, int x, int y, t_fractol *fractol)
     fractol_render(fractol);
     return 0;
 }
+
+int track_julia(int x, int y, t_fractol *fractol)
+{
+    if (!ft_strncmp(fractol->name, "julia", 5))
+    {
+        fractol->julia_x = map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
+        fractol->julia_y = map(y, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
+        fractol_render(fractol);
+    }
+    return 0;
+}

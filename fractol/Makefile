@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = fractol
-SRCS = fractol.c fractol_utils.c render.c math_functions.c
+SRCS = fractol.c fractol_utils.c render.c math_functions.c string_utils.c events.c 
 OBJ = $(SRCS:.c=.o)
 LIB = Libft
 MLX = minilibx

@@ -54,6 +54,8 @@ typedef struct s_fractol
 	double shift_x;
 	double shift_y;
 	double zoom;
+	double julia_x;
+	double julia_y;
 	
 }			t_fractol;
 
@@ -66,4 +68,6 @@ t_complex	square_complex(t_complex z);
 int key_handler(int keysym, t_fractol *fractol);
 int close_handler(t_fractol *fractol);
 int mouse_handler(int button, int x, int y, t_fractol *fractol);
+double	atodbl(char *s);
+int track_julia(int x, int y, t_fractol *fractol);
 #endif

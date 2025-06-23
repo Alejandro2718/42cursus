@@ -29,21 +29,26 @@ static void	data_init(t_fractol *fractol)
 
 static void events_init(t_fractol *fractol)
 {
-	mlx_hook(fractal->mlx_window, win_ptr:
+	mlx_hook(fractol->mlx_window, win_ptr:
 			KeyPress,
 			KeyPressMask,
 			Key_handler,
-			fractal);
-	mlx_hook(fractal->mlx_window, 
+			fractol);
+	mlx_hook(fractol->mlx_window, 
 			ButtonPress,
 			ButtonPressMask,
 			mouse_handler,
-			fractal);
-	mlx_hook(fractal->mlx_window, 
+			fractol);
+	mlx_hook(fractol->mlx_window, 
 			DestroyNotify,
 			StructureNotifyMask,
 			close_handler,
-			fractal);
+			fractol);
+	mlx_hook(fractol->mlx_window, 
+			MotionNotify,
+			PointerMotionMask,
+			julia_track,
+			fractol);
 }
 
 void	fractol_init(t_fractol *fractol)

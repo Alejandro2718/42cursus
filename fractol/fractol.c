@@ -28,9 +28,12 @@ int	main(int argc, char **argv)
 		If prompt correct, start the fractal app
 		*/
 		fractol.name = argv[1];
+		fractol.julia_x = atodbl(argv[2]);
+		fractol.julia_y = atodbl(argv[3]);
 		fractol_init(&fractol);
-		fractol_render(&fractol); // POR HACER
+		fractol_render(&fractol);
 		mlx_loop(fractol.mlx_connec);
+		// video 1:55:43 
 	}
 	else
 	{

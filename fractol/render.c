@@ -22,6 +22,19 @@ static void my_pixel_put(int x, int y, t_img *img, int color)
 	color = *(unsigned int *)(img->pixel_pit + offset);
 }
 
+static void mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractol)
+{
+	if (ft_strncmp(fractol->name, "julia", 5))
+	{
+		c->x = fractol->julia_x;
+		c->y = fractol->julia_y;
+	}
+	else{
+		c->x = z->x;
+		c->y = z->y; 
+	}
+}
+
 static void	handle_pixel(int x, int y, t_fractol *fractol)
 {
 	t_complex	z;
@@ -30,10 +43,13 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 	int			color;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
-	c.x = (map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
-	c.y = (map(x, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
+	// z.x = 0.0;
+	// z.y = 0.0;
+	z.x = (map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
+	z.y = (map(x, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
+
+	mandel_vs_julia(&z, &c, fractol);
+
 	while (i < fractol->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
