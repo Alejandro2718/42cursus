@@ -57,8 +57,6 @@ int	main(void)
 	server_pid = getpid();
 	ft_printf("PID: %i\n", server_pid);
 	while (1)
-	{
-		pause();
-	}
+		;
 	return (0);
 }
