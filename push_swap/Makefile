@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
-SOURCE = push_swap.c
+SOURCE = push_swap.c node_manipulation.c
 OBJECTS = $(SOURCE:.c=.o)
 LIB = Libft
 
