@@ -6,12 +6,12 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 19:23:08 by alejjime          #+#    #+#              #
-#    Updated: 2025/06/24 20:01:41 by alejjime         ###   ########.fr        #
+#    Updated: 2025/07/02 18:39:04 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SOURCE = push_swap.c node_manipulation.c
+SOURCE = push_swap.c node_manipulation.c arguments_checker.c
 OBJECTS = $(SOURCE:.c=.o)
 LIB = Libft
 

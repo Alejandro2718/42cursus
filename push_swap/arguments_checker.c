@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   arguments_checker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/02 19:25:50 by alejjime         ###   ########.fr       */
+/*   Created: 2025/07/02 18:38:59 by alejjime          #+#    #+#             */
+/*   Updated: 2025/07/02 19:18:50 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft/libft.h"
-#include <unistd.h>
+#include "push_swap.h"
 
-typedef struct node
+int	check_arg(char *argv)
 {
-	int			data;
-	struct node	*prev;
-	struct node	*next;
-}				t_node;
+	int	i;
 
-t_node			*createNode(int data);
-void			insert_front(t_node **head, int data);
-void			insert_end(t_node **head, int data);
-void			free_list(t_node *head);
-int				check_arg(char *argv);
-void			print_nodes(t_node **head);
+	i = 0;
+	if (argv && ft_strncmp(argv, "", ft_strlen(argv)))
+	{
+		// anadir caso de solo "-" y seguido de nada
+		while (argv[i] == '-')
+		{
+			i++;
+		}
+		while (argv[i] != '\0')
+		{
+			if (ft_isdigit(argv[i]))
+				i++;
+			else
+			{
+				ft_printf("Error\n");
+				return (0);
+			}
+		}
+		return (1);
+	}
+	ft_printf("Error\n");
+	return (0);
+}

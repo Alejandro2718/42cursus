@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:47:58 by alejjime          #+#    #+#             */
-/*   Updated: 2025/01/05 18:50:13 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/02 19:44:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*spe_case(void)
 	return (string);
 }
 
-char	*min_maximus(char *string)
+static char	*min_maximus(char *string)
 {
 	string = malloc(12);
 	if (!string)
