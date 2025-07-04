@@ -17,16 +17,17 @@ int	check_arg(char *argv)
 	int	i;
 
 	i = 0;
-	if (argv && ft_strncmp(argv, "", ft_strlen(argv)))
+	if (argv[i] == '-' && !(ft_isdigit(argv[i+1])))
 	{
-		// anadir caso de solo "-" y seguido de nada
-		while (argv[i] == '-')
-		{
-			i++;
-		}
+		ft_printf("Error\n");
+		return (0);
+	}
+	i++;
+	if (argv && ft_strncmp(argv, "", ft_strlen(argv)))
+	{		
 		while (argv[i] != '\0')
 		{
-			if (ft_isdigit(argv[i]))
+			if (ft_isdigit(argv[i]) && argv[i] != '-')
 				i++;
 			else
 			{
