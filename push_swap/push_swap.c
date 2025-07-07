@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		ft_printf("Usage: %s <Numbers>\n", argv[0]);
 		return (1);
 	}
-	// Comprobaciones logicas (is int?, max_int?)
+	// Comprobar que no hayan duplicados
 	// create node and store the list
 	while (i < argc)
 	{

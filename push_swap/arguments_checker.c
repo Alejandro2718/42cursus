@@ -12,12 +12,24 @@
 
 #include "push_swap.h"
 
+static int int_size(char *argv)
+{
+	int temp = ft_atoi(argv);
+	
+	char *str1 = ft_itoa(temp);
+
+	if (!ft_strncmp(str1, argv, ft_strlen(argv)))
+		return (0);
+	else
+		return (1);
+}
+
 int	check_arg(char *argv)
 {
 	int	i;
 
 	i = 0;
-	if (argv[i] == '-' && !(ft_isdigit(argv[i+1])))
+	if (int_size(argv) || (argv[i] == '-' && !(ft_isdigit(argv[i+1]))))
 	{
 		ft_printf("Error\n");
 		return (0);
