@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:20:39 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/02 19:49:26 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:57:43 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,25 @@ int	main(int argc, char **argv)
 	{
 		if (check_arg(argv[i]))
 		{
-			// ft_printf("Node[%i]: %s\n", i, argv[i]);
-			insert_end(&head, ft_atoi(argv[i]));
+			// insert_end(&head, ft_atoi(argv[i]));
 			i++;
 		}
 		else
 		{
-			// ft_printf("Error\n");
 			free_list(head);
 			return (0);
 		}
+	}
+	if (int_duplicate(argv))
+	{
+		free_list(head);
+		return (0);
+	}
+	i = 1;
+	while (i < argc)
+	{
+		insert_end(&head, ft_atoi(argv[i]));
+		i++;
 	}
 	print_nodes(&head);
 	free_list(head);

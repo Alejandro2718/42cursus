@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/02 19:25:50 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:26:38 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ void			insert_end(t_node **head, int data);
 void			free_list(t_node *head);
 int				check_arg(char *argv);
 void			print_nodes(t_node **head);
+int				int_duplicate(char **argv);
