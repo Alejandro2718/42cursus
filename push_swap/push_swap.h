@@ -27,3 +27,6 @@ void			free_list(t_node *head);
 int				check_arg(char *argv);
 void			print_nodes(t_node **head);
 int				int_duplicate(char **argv);
+void			sa(t_node **head_a);
+void			sb(t_node **head_b);
+void			ss(t_node **head_a, t_node **head_b);

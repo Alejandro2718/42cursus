@@ -14,10 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	t_node	*head;
+	t_node	*head_a;
+	t_node	*head_b;
 	int		i;
 
-	head = NULL;
+	head_a = NULL;
+	head_b = NULL;
 	i = 1;
 	// Comprobaciones de argumentos
 	if (argc < 3)
@@ -36,22 +38,27 @@ int	main(int argc, char **argv)
 		}
 		else
 		{
-			free_list(head);
+			free_list(head_a);
 			return (0);
 		}
 	}
 	if (int_duplicate(argv))
 	{
-		free_list(head);
+		free_list(head_a);
 		return (0);
 	}
 	i = 1;
 	while (i < argc)
 	{
-		insert_end(&head, ft_atoi(argv[i]));
+		insert_end(&head_a, ft_atoi(argv[i]));
+		insert_end(&head_b, ft_atoi(argv[i]));
 		i++;
 	}
-	print_nodes(&head);
-	free_list(head);
+	print_nodes(&head_a);
+	print_nodes(&head_b);
+	ss(&head_a, &head_b);
+	print_nodes(&head_a);
+	print_nodes(&head_b);
+	free_list(head_a);
 	return (0);
 }
