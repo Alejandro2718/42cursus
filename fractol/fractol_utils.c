@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 18:04:50 by alejjime          #+#    #+#             */
-/*   Updated: 2025/05/03 17:51:37 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:43:32 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,15 @@ static void	data_init(t_fractol *fractol)
 	fractol->zoom = 1.0;
 }
 
-static void events_init(t_fractol *fractol)
+static void	events_init(t_fractol *fractol)
 {
-	mlx_hook(fractol->mlx_window, win_ptr:
-			KeyPress,
-			KeyPressMask,
-			Key_handler,
-			fractol);
-	mlx_hook(fractol->mlx_window, 
-			ButtonPress,
-			ButtonPressMask,
-			mouse_handler,
-			fractol);
-	mlx_hook(fractol->mlx_window, 
-			DestroyNotify,
-			StructureNotifyMask,
-			close_handler,
-			fractol);
-	mlx_hook(fractol->mlx_window, 
-			MotionNotify,
-			PointerMotionMask,
-			julia_track,
-			fractol);
+	mlx_hook(fractol->mlx_window, KeyPress, KeyPressMask, key_handler, fractol);
+	mlx_hook(fractol->mlx_window, ButtonPress, ButtonPressMask, mouse_handler,
+		fractol);
+	mlx_hook(fractol->mlx_window, DestroyNotify, StructureNotifyMask,
+		close_handler, fractol);
+	mlx_hook(fractol->mlx_window, MotionNotify, PointerMotionMask, track_julia,
+		fractol);
 }
 
 void	fractol_init(t_fractol *fractol)

@@ -6,7 +6,7 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/11 13:52:46 by alejjime          #+#    #+#              #
-#    Updated: 2025/05/03 16:36:04 by alejjime         ###   ########.fr        #
+#    Updated: 2025/07/15 16:47:38 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 SRCS = fractol.c fractol_utils.c render.c math_functions.c string_utils.c events.c 
 OBJ = $(SRCS:.c=.o)
 LIB = Libft
-MLX = minilibx
+MLX = minilibx-linux
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

@@ -6,32 +6,32 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:32:37 by alejjime          #+#    #+#             */
-/*   Updated: 2025/05/03 18:05:41 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:28:50 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void my_pixel_put(int x, int y, t_img *img, int color)
+static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
-	int offset;
+	int	offset;
 
 	(void)color;
-
 	offset = (y * img->line_len) + (x * (img->bits_p_pixel / 8));
 	color = *(unsigned int *)(img->pixel_pit + offset);
 }
 
-static void mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractol)
+static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractol)
 {
 	if (ft_strncmp(fractol->name, "julia", 5))
 	{
 		c->x = fractol->julia_x;
 		c->y = fractol->julia_y;
 	}
-	else{
+	else
+	{
 		c->x = z->x;
-		c->y = z->y; 
+		c->y = z->y;
 	}
 }
 
@@ -47,9 +47,7 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 	// z.y = 0.0;
 	z.x = (map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
 	z.y = (map(x, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
-
 	mandel_vs_julia(&z, &c, fractol);
-
 	while (i < fractol->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
@@ -83,5 +81,6 @@ void	fractol_render(t_fractol *fractol)
 			handle_pixel(x, y, fractol);
 		}
 	}
-	mlx_put_image_to_window(fractol->mlx_connec, fractol->mlx_window, fractol->img.img_pit, 0, 0);
+	mlx_put_image_to_window(fractol->mlx_connec, fractol->mlx_window,
+		fractol->img.img_pit, 0, 0);
 }

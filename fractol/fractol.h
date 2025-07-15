@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:33 by alejjime          #+#    #+#             */
-/*   Updated: 2025/05/03 18:06:57 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:37:05 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define FRACTOL_H
 
 # include "Libft/libft.h"
-# include "minilibx/mlx.h"
-# include <math.h>
-# include <unistd.h>
+# include "minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <math.h>
 # include <stdio.h>
+# include <unistd.h>
 
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 400
@@ -51,12 +51,12 @@ typedef struct s_fractol
 	t_img	img;
 	double	escape_value;
 	int		iterations_definition;
-	double shift_x;
-	double shift_y;
-	double zoom;
-	double julia_x;
-	double julia_y;
-	
+	double	shift_x;
+	double	shift_y;
+	double	zoom;
+	double	julia_x;
+	double	julia_y;
+
 }			t_fractol;
 
 void		fractol_init(t_fractol *fractol);
@@ -65,9 +65,9 @@ double		map(double unscaled_num, double new_min, double new_max,
 				double old_min, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
-int key_handler(int keysym, t_fractol *fractol);
-int close_handler(t_fractol *fractol);
-int mouse_handler(int button, int x, int y, t_fractol *fractol);
-double	atodbl(char *s);
-int track_julia(int x, int y, t_fractol *fractol);
+int			key_handler(int keysym, t_fractol *fractol);
+int			close_handler(t_fractol *fractol);
+int			mouse_handler(int button, int x, int y, t_fractol *fractol);
+double		atodbl(char *s);
+int			track_julia(int x, int y, t_fractol *fractol);
 #endif
