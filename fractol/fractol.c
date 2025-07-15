@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:08 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 16:29:23 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:15:40 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
-	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) || (argc == 4
-			&& !ft_strncmp(argv[1], "julia", 5)))
+	if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 	{
-		/*
-		If prompt correct, start the fractal app
-		*/
+		fractol.name = argv[1];
+		fractol_init(&fractol);
+		fractol_render(&fractol);
+		mlx_loop(fractol.mlx_connec);
+	}
+	else if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+	{
 		fractol.name = argv[1];
 		fractol.julia_x = atodbl(argv[2]);
 		fractol.julia_y = atodbl(argv[3]);
@@ -36,8 +39,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		/*If prompt wrong, display error message*/
 		ft_printf("Please enter:\n\t\"./fractol mandelbrot\" \n\t\tor \
-			\n\t\"./fractol julia <value1> <value2>\"\n");
+            \n\t\"./fractol julia <value1> <value2>\"\n");
 	}
 }

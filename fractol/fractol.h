@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:33 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 16:37:05 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:58:08 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_fractol
 void		fractol_init(t_fractol *fractol);
 void		fractol_render(t_fractol *fractol);
 double		map(double unscaled_num, double new_min, double new_max,
-				double old_min, double old_max);
+				double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 int			key_handler(int keysym, t_fractol *fractol);

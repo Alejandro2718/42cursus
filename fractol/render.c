@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:32:37 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 16:28:50 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:58:54 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int	offset;
 
-	(void)color;
 	offset = (y * img->line_len) + (x * (img->bits_p_pixel / 8));
-	color = *(unsigned int *)(img->pixel_pit + offset);
+	*(unsigned int *)(img->pixel_pit + offset) = color;
 }
 
 static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractol)
 {
-	if (ft_strncmp(fractol->name, "julia", 5))
+	if (!ft_strncmp(fractol->name, "julia", 5))
 	{
 		c->x = fractol->julia_x;
 		c->y = fractol->julia_y;
@@ -32,6 +31,8 @@ static void	mandel_vs_julia(t_complex *z, t_complex *c, t_fractol *fractol)
 	{
 		c->x = z->x;
 		c->y = z->y;
+		z->x = 0.0;
+		z->y = 0.0;
 	}
 }
 
@@ -43,17 +44,15 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 	int			color;
 
 	i = 0;
-	// z.x = 0.0;
-	// z.y = 0.0;
-	z.x = (map(x, -2, +2, 0, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
-	z.y = (map(x, +2, -2, 0, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
+	z.x = (map(x, -2, +2, WINDOW_WIDTH) * fractol->zoom) + fractol->shift_x;
+	z.y = (map(y, +2, -2, WINDOW_HEIGHT) * fractol->zoom) + fractol->shift_y;
 	mandel_vs_julia(&z, &c, fractol);
 	while (i < fractol->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractol->escape_value)
 		{
-			color = map(i, BLACK, WHITE, 0, fractol->iterations_definition);
+			color = map(i, BLACK, WHITE, fractol->iterations_definition);
 			my_pixel_put(x, y, &fractol->img, color);
 			return ;
 		}
@@ -61,11 +60,6 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 	}
 	my_pixel_put(x, y, &fractol->img, PURPLE);
 }
-/*
-Mandelbrot set exist between:
-	x Real: -2 and 1
-	y Imagi: -1.5 and 1.5
-*/
 
 void	fractol_render(t_fractol *fractol)
 {
