@@ -51,13 +51,17 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		insert_end(&head_a, ft_atoi(argv[i]));
-		insert_end(&head_b, ft_atoi(argv[i]));
+		insert_end(&head_b, ft_atoi(argv[i] + 1));
 		i++;
 	}
+	ft_printf("stack a:\n");
 	print_nodes(&head_a);
+	ft_printf("stack b:\n");
 	print_nodes(&head_b);
-	ss(&head_a, &head_b);
+	ra(&head_a);
+	ft_printf("stack a:\n");
 	print_nodes(&head_a);
+	ft_printf("stack b:\n");
 	print_nodes(&head_b);
 	free_list(head_a);
 	return (0);

@@ -74,11 +74,6 @@ void	insert_end(t_node **head, int data)
 	new_node->prev = temp;
 }
 
-void	delete_node(t_node *head)
-{
-	
-}
-
 void	free_list(t_node *head)
 {
 	t_node	*tmp;

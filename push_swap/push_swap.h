@@ -30,3 +30,6 @@ int				int_duplicate(char **argv);
 void			sa(t_node **head_a);
 void			sb(t_node **head_b);
 void			ss(t_node **head_a, t_node **head_b);
+void			pa(t_node **head_a, t_node **head_b);
+void			pb(t_node **head_a, t_node **head_b);
+void			ra(t_node **head_a);
