@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 18:04:50 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 16:43:32 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:10:36 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static void	events_init(t_fractol *fractol)
 		fractol);
 	mlx_hook(fractol->mlx_window, DestroyNotify, StructureNotifyMask,
 		close_handler, fractol);
-	mlx_hook(fractol->mlx_window, MotionNotify, PointerMotionMask, track_julia,
-		fractol);
+	mlx_hook(fractol->mlx_window, MotionNotify, PointerMotionMask, 0, fractol);
 }
 
 void	fractol_init(t_fractol *fractol)

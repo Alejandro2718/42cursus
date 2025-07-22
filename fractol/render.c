@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 15:32:37 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 17:58:54 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:12:01 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	handle_pixel(int x, int y, t_fractol *fractol)
 		}
 		++i;
 	}
-	my_pixel_put(x, y, &fractol->img, PURPLE);
+	my_pixel_put(x, y, &fractol->img, WHITE);
 }
 
 void	fractol_render(t_fractol *fractol)

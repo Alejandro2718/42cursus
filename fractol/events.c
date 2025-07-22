@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:29:00 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 17:59:12 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:08:09 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	key_handler(int keysym, t_fractol *fractol)
 	else if (keysym == XK_plus)
 		fractol->iterations_definition += 10;
 	else if (keysym == XK_minus)
-		fractol->iterations_definition -= 10;
+	{
+		if (fractol->iterations_definition > 10)
+			fractol->iterations_definition -= 10;
+	}
 	fractol_render(fractol);
 	return (0);
 }
@@ -45,28 +48,14 @@ int	mouse_handler(int button, int x, int y, t_fractol *fractol)
 {
 	(void)x;
 	(void)y;
-	if (button == Button5)
+	if (button == Button5) // Scroll down - zoom out
 	{
 		fractol->zoom *= 0.95;
 	}
-	else if (button == Button4)
+	else if (button == Button4) // Scroll up - zoom in
 	{
 		fractol->zoom *= 1.05;
 	}
-	ft_printf("%d\n", button);
 	fractol_render(fractol);
-	return (0);
-}
-
-int	track_julia(int x, int y, t_fractol *fractol)
-{
-	if (!ft_strncmp(fractol->name, "julia", 5))
-	{
-		fractol->julia_x = (map(x, -2, +2, WINDOW_WIDTH) * fractol->zoom)
-			+ fractol->shift_x;
-		fractol->julia_y = (map(y, +2, -2, WINDOW_HEIGHT) * fractol->zoom)
-			+ fractol->shift_y;
-		fractol_render(fractol);
-	}
 	return (0);
 }

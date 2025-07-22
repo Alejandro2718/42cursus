@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:33 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/15 17:58:08 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:21:31 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ int			key_handler(int keysym, t_fractol *fractol);
 int			close_handler(t_fractol *fractol);
 int			mouse_handler(int button, int x, int y, t_fractol *fractol);
 double		atodbl(char *s);
-int			track_julia(int x, int y, t_fractol *fractol);
 #endif
