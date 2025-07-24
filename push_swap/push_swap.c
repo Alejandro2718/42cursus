@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	print_nodes(&head_a);
 	ft_printf("stack b:\n");
 	print_nodes(&head_b);
-	ra(&head_a);
+	rrr(&head_a, &head_b);
 	ft_printf("stack a:\n");
 	print_nodes(&head_a);
 	ft_printf("stack b:\n");

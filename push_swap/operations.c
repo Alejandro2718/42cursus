@@ -127,7 +127,7 @@ void ra(t_node **head_a)
     (*head_a)->next = NULL;
     
     (*head_a) = temp;
-    ft_printf("ra\n");
+    // ft_printf("ra\n");
 }
 
 //rb (rotate b)
@@ -148,8 +148,104 @@ void rb(t_node **head_b)
     (*head_b)->prev = last;
     (*head_b)->next = NULL;
     (*head_b) = temp;
-    ft_printf("rb\n");
+    // ft_printf("rb\n");
 }
 
 //rr (ra && rb at same time)
 
+void rr(t_node **head_a, t_node **head_b)
+{
+    ra(head_a);
+    rb(head_b);
+    ft_printf("rr\n");
+}
+
+// rra (reverse rotate a)
+
+void rra(t_node **head_a)
+{
+    t_node *last;
+    t_node *temp;
+
+    if (*head_a == NULL || (*head_a)->next == NULL)
+        return ;
+    last = (*head_a);
+    while (last->next)
+        last = last->next;
+    temp = last->prev;
+    temp->next = NULL;
+
+    last->prev = NULL;
+    last->next = (*head_a);
+
+    (*head_a)->prev = last;
+
+    (*head_a) = last;
+
+    // ft_printf("rra\n");
+}
+
+// rrb (reverse rotate b)
+
+void rrb(t_node **head_b)
+{
+    t_node *last;
+    t_node *temp;
+
+    if (*head_b == NULL || (*head_b)->next == NULL)
+        return ;
+    last = (*head_b);
+    while (last->next)
+        last = last->next;
+    temp = last->prev;
+    temp->next = NULL;
+
+    last->prev = NULL;
+    last->next = (*head_b);
+
+    (*head_b)->prev = last;
+
+    (*head_b) = last;
+
+    // ft_printf("rrb\n");
+}
+
+// rrr (rra and rrb at the same time)
+
+void rrr(t_node **head_a, t_node **head_b)
+{
+    rra(head_a);
+    rrb(head_b);
+    ft_printf("rrr\n");
+}
+
+/*
+void	rrr(t_node **head_a, t_node **head_b)
+{
+	t_node	*last;
+
+	if (*head_a && (*head_a)->next)
+	{
+		last = *head_a;
+		while (last->next)
+			last = last->next;
+		(last->prev)->next = NULL;
+		last->prev = NULL;
+		last->next = *head_a;
+		(*head_a)->prev = last;
+		*head_a = last;
+	}
+	if (*head_b && (*head_b)->next)
+	{
+		last = *head_b;
+		while (last->next)
+			last = last->next;
+		(last->prev)->next = NULL;
+		last->prev = NULL;
+		last->next = *head_b;
+		(*head_b)->prev = last;
+		*head_b = last;
+	}
+	ft_printf("rrr\n");
+}
+*/

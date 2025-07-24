@@ -33,3 +33,8 @@ void			ss(t_node **head_a, t_node **head_b);
 void			pa(t_node **head_a, t_node **head_b);
 void			pb(t_node **head_a, t_node **head_b);
 void			ra(t_node **head_a);
+void			rb(t_node **head_b);
+void			rr(t_node **head_a, t_node **head_b);
+void			rra(t_node **head_a);
+void			rrb(t_node **head_b);
+void			rrr(t_node **head_a, t_node **head_b);
