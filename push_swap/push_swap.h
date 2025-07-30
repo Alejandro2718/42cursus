@@ -16,6 +16,11 @@
 typedef struct node
 {
 	int			data;
+	int			index;
+	int			push_cost;
+	int		above_median;
+	int		cheapest;
+	struct node *target_node;
 	struct node	*prev;
 	struct node	*next;
 }				t_node;
@@ -38,3 +43,5 @@ void			rr(t_node **head_a, t_node **head_b);
 void			rra(t_node **head_a);
 void			rrb(t_node **head_b);
 void			rrr(t_node **head_a, t_node **head_b);
+int				stack_size(t_node *head);
+int				find_position(t_node *head, int value);

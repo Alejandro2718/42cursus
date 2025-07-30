@@ -54,14 +54,14 @@ int	main(int argc, char **argv)
 		insert_end(&head_b, ft_atoi(argv[i] + 1));
 		i++;
 	}
-	ft_printf("stack a:\n");
+	ft_printf("stack a: [%i]\n", stack_size(head_a));
 	print_nodes(&head_a);
-	ft_printf("stack b:\n");
+	ft_printf("stack b: [%i]\n", stack_size(head_b));
 	print_nodes(&head_b);
-	rrr(&head_a, &head_b);
-	ft_printf("stack a:\n");
+	pb(&head_a, &head_b);
+	ft_printf("stack a: [%i]\n", stack_size(head_a));
 	print_nodes(&head_a);
-	ft_printf("stack b:\n");
+	ft_printf("stack b: [%i]\n", stack_size(head_b));
 	print_nodes(&head_b);
 	free_list(head_a);
 	return (0);
