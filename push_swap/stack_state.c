@@ -46,36 +46,25 @@ int find_position(t_node *head, int value)
 // Verificar si una pila está ordenada
 int is_sorted(t_node *head)
 {
-    t_node *head_1;
-    t_node *head_2;
-    
-    head_1 = head;
-    head_2 = head;
+    t_node *temp;
 
-    if (head != NULL)
-        return (-1);
+    if (head == NULL || head->next == NULL)
+        return (1);
 
-    while ()
+    temp = head;
+    while (temp->next != NULL)
     {
-        // j = i + 1
-        while ()
-        {
-
-            // j++
-        }
-        // i++
+        if (temp->data > temp->next->data)
+            return (0);
+        temp = temp->next;
     }
+    return (1);
 }
 
+// Encontrar el valor mínimo/máximo
+int find_min(t_node *head);
+{
 
+}
 
-
-
-
-
-
-
-
-// // Encontrar el valor mínimo/máximo
-// int find_min(t_node *head);
-// int find_max(t_node *head);
+int find_max(t_node *head);

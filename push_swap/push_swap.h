@@ -45,3 +45,4 @@ void			rrb(t_node **head_b);
 void			rrr(t_node **head_a, t_node **head_b);
 int				stack_size(t_node *head);
 int				find_position(t_node *head, int value);
+int				is_sorted(t_node *head);
