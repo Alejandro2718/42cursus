@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:33 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/22 19:21:31 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:37:37 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <X11/keysym.h>
 # include <math.h>
 # include <stdio.h>
-# include <unistd.h>
 
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 400

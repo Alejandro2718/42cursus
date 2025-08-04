@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:53:08 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/22 19:35:45 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:33:58 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,31 @@ static int	is_valid_float(char *str)
 	return (1);
 }
 
+static void	handle_mandelbrot(t_fractol *fractol, char *name)
+{
+	fractol->name = name;
+	fractol_init(fractol);
+	fractol_render(fractol);
+	mlx_loop(fractol->mlx_connec);
+}
+
+static int	handle_julia(t_fractol *fractol, char **argv)
+{
+	if (!is_valid_float(argv[2]) || !is_valid_float(argv[3]))
+	{
+		ft_printf("Error: Invalid numeric parameters for Julia set\n");
+		print_usage();
+		return (1);
+	}
+	fractol->name = argv[1];
+	fractol->julia_x = atodbl(argv[2]);
+	fractol->julia_y = atodbl(argv[3]);
+	fractol_init(fractol);
+	fractol_render(fractol);
+	mlx_loop(fractol->mlx_connec);
+	return (0);
+}
+
 /*
 	Two possible prompts:
 		./fractol mandelbrot
@@ -60,26 +85,11 @@ int	main(int argc, char **argv)
 	t_fractol	fractol;
 
 	if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-	{
-		fractol.name = argv[1];
-		fractol_init(&fractol);
-		fractol_render(&fractol);
-		mlx_loop(fractol.mlx_connec);
-	}
+		handle_mandelbrot(&fractol, argv[1]);
 	else if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
 	{
-		if (!is_valid_float(argv[2]) || !is_valid_float(argv[3]))
-		{
-			ft_printf("Error: Invalid numeric parameters for Julia set\n");
-			print_usage();
+		if (handle_julia(&fractol, argv))
 			return (1);
-		}
-		fractol.name = argv[1];
-		fractol.julia_x = atodbl(argv[2]);
-		fractol.julia_y = atodbl(argv[3]);
-		fractol_init(&fractol);
-		fractol_render(&fractol);
-		mlx_loop(fractol.mlx_connec);
 	}
 	else
 	{
