@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/07/08 18:26:38 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/04 20:07:01 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ typedef struct node
 	int			data;
 	int			index;
 	int			push_cost;
-	int		above_median;
-	int		cheapest;
-	struct node *target_node;
+	int			above_median;
+	int			cheapest;
+	struct node	*target_node;
 	struct node	*prev;
 	struct node	*next;
 }				t_node;
@@ -46,3 +46,8 @@ void			rrr(t_node **head_a, t_node **head_b);
 int				stack_size(t_node *head);
 int				find_position(t_node *head, int value);
 int				is_sorted(t_node *head);
+int				find_min(t_node *head);
+int				find_max(t_node *head);
+void			update_index(t_node *stack);
+void			set_above_median(t_node *stack);
+void			reset_cheapest(t_node *stack);
