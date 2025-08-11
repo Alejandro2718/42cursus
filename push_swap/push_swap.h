@@ -51,3 +51,6 @@ int				find_max(t_node *head);
 void			update_index(t_node *stack);
 void			set_above_median(t_node *stack);
 void			reset_cheapest(t_node *stack);
+t_node *get_cheapest(t_node *stack);
+void move_to_top(t_node **stack, t_node *target);
+void execute_cheapest_move(t_node **stack_a, t_node **stack_b);
