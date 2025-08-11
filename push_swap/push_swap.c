@@ -12,6 +12,35 @@
 
 #include "push_swap.h"
 
+void turk_algorithm(t_node **stack_a, t_node **stack_b)
+{
+	int n;
+    if (!stack_a || !*stack_a)
+        return;
+    n = stack_size(*stack_a);
+    if (n <= 3)
+    {
+        sort_three(stack_a);
+        return;
+    }
+    if (is_sorted(*stack_a))
+        return;
+    push_all_but_three(stack_a, stack_b);
+    sort_three(stack_a);
+    while (stack_b && *stack_b)
+    {
+        update_index(*stack_a);
+        update_index(*stack_b);
+        set_above_median(*stack_a);
+        set_above_median(*stack_b);
+        calculate_push_costs(*stack_a, *stack_b);
+        set_cheapest(*stack_b); // <-- Añadido para marcar el nodo más barato
+        execute_cheapest_move(stack_a, stack_b);
+        reset_cheapest(*stack_b);
+    }
+    final_rotation(stack_a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_node	*head_a;
@@ -28,12 +57,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	// Comprobar que no hayan duplicados
-	// create node and store the list
 	while (i < argc)
 	{
 		if (check_arg(argv[i]))
 		{
-			// insert_end(&head, ft_atoi(argv[i]));
 			i++;
 		}
 		else
@@ -51,18 +78,11 @@ int	main(int argc, char **argv)
 	while (i < argc)
 	{
 		insert_end(&head_a, ft_atoi(argv[i]));
-		insert_end(&head_b, ft_atoi(argv[i] + 1));
 		i++;
 	}
-	ft_printf("stack a: [%i]\n", stack_size(head_a));
-	print_nodes(&head_a);
-	ft_printf("stack b: [%i]\n", stack_size(head_b));
-	print_nodes(&head_b);
-	pb(&head_a, &head_b);
-	ft_printf("stack a: [%i]\n", stack_size(head_a));
-	print_nodes(&head_a);
-	ft_printf("stack b: [%i]\n", stack_size(head_b));
-	print_nodes(&head_b);
+	turk_algorithm(&head_a, &head_b);
 	free_list(head_a);
+	free_list(head_b);
+	
 	return (0);
 }

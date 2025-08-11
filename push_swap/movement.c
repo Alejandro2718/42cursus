@@ -1,6 +1,4 @@
-
-
-
+#include "push_swap.h"
 
 t_node *get_cheapest(t_node *stack)                // Obtener nodo con cheapest = 1
 {
@@ -85,7 +83,7 @@ void execute_cheapest_move(t_node **stack_a, t_node **stack_b)
     if (!stack_a || !stack_b || !*stack_b)
         return;
     node_b = get_cheapest(*stack_b);
-    if (!node_b || !(target_a = node_b->target))
+    if (!node_b || !(target_a = node_b->target_node))
         return;
     rotate_both_up(stack_a, stack_b, target_a, node_b);
     rotate_both_down(stack_a, stack_b, target_a, node_b);

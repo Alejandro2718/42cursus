@@ -25,6 +25,7 @@ void	sa(t_node **head_a)
 	(*head_a)->data = temp->data;
 	temp->data = i;
 	ft_printf("sa\n");
+	print_nodes(head_a);
 }
 
 // sb (swap b)
@@ -40,6 +41,7 @@ void	sb(t_node **head_b)
 	(*head_b)->data = temp->data;
 	temp->data = i;
 	ft_printf("sb\n");
+	print_nodes(head_b);
 }
 
 // ss (sa and sb at the same time)
@@ -62,6 +64,8 @@ void	ss(t_node **head_a, t_node **head_b)
 	(*head_b)->data = temp_b->data;
 	temp_b->data = j;
 	ft_printf("ss\n");
+	print_nodes(head_a);
+	print_nodes(head_b);
 }
 
 // pa (push a)
@@ -86,6 +90,8 @@ void	pa(t_node **head_a, t_node **head_b)
 		temp->next = NULL;
 	(*head_a) = temp;
 	ft_printf("pa\n");
+	print_nodes(head_a);
+	print_nodes(head_b);
 }
 
 // pb (push b)
@@ -110,6 +116,8 @@ void	pb(t_node **head_a, t_node **head_b)
 		temp->next = NULL;
 	(*head_b) = temp;
 	ft_printf("pb\n");
+	print_nodes(head_a);
+	print_nodes(head_b);
 }
 
 // ra (rotate a)
@@ -130,6 +138,8 @@ void	ra(t_node **head_a)
 	(*head_a)->prev = last;
 	(*head_a)->next = NULL;
 	(*head_a) = temp;
+	ft_printf("ra\n");
+	print_nodes(head_a);
 }
 
 // rb (rotate b)
@@ -150,6 +160,8 @@ void	rb(t_node **head_b)
 	(*head_b)->prev = last;
 	(*head_b)->next = NULL;
 	(*head_b) = temp;
+	ft_printf("rb\n");
+	print_nodes(head_b);
 }
 
 // rr (ra && rb at same time)
@@ -159,6 +171,8 @@ void	rr(t_node **head_a, t_node **head_b)
 	ra(head_a);
 	rb(head_b);
 	ft_printf("rr\n");
+	print_nodes(head_a);
+	print_nodes(head_b);
 }
 
 // rra (reverse rotate a)
@@ -179,6 +193,8 @@ void	rra(t_node **head_a)
 	last->next = (*head_a);
 	(*head_a)->prev = last;
 	(*head_a) = last;
+	ft_printf("rra\n");
+	print_nodes(head_a);
 }
 
 // rrb (reverse rotate b)
@@ -199,6 +215,8 @@ void	rrb(t_node **head_b)
 	last->next = (*head_b);
 	(*head_b)->prev = last;
 	(*head_b) = last;
+	ft_printf("rrb\n");
+	print_nodes(head_b);
 }
 
 // rrr (rra and rrb at the same time)
@@ -208,6 +226,8 @@ void	rrr(t_node **head_a, t_node **head_b)
 	rra(head_a);
 	rrb(head_b);
 	ft_printf("rrr\n");
+	print_nodes(head_a);
+	print_nodes(head_b);
 }
 
 /*

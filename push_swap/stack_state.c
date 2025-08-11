@@ -36,7 +36,7 @@ int	find_position(t_node *head, int value)
 
 	temp = head;
 	i = 0;
-	if (head != NULL)
+	if (head == NULL)
 		return (-1);
 	while (temp != NULL)
 	{
@@ -101,3 +101,22 @@ int	find_max(t_node *head)
 	}
 	return (mayor);
 }
+
+// void	print_nodes(t_node **head)
+// {
+// 	t_node	*temp;
+// 	int		i;
+
+// 	i = 0;
+// 	temp = *head;
+// 	if (!temp)
+// 	{
+// 		ft_printf("Pila vacía\n");
+// 		return;
+// 	}
+// 	while (temp != NULL)
+// 	{
+// 		ft_printf("Node[%i]: %d\n", i++, temp->data);
+// 		temp = temp->next;
+// 	}
+// }
