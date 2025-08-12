@@ -6,40 +6,13 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:20:39 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/12 20:19:07 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/12 21:08:47 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Helpers para reducir líneas en main y el algoritmo
-static int	args_are_valid(int argc, char **argv)
-{
-	int	i;
-
-	if (argc < 3)
-		return (0);
-	i = 1;
-	while (i < argc)
-	{
-		if (!check_arg(argv[i]))
-			return (0);
-		i++;
-	}
-	if (int_duplicate(argv))
-		return (0);
-	return (1);
-}
-
-static void	fill_stack_a(int argc, char **argv, t_node **head_a)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-		insert_end(head_a, ft_atoi(argv[i++]));
-}
-
 static void	process_b_cycle(t_node **stack_a, t_node **stack_b)
 {
 	update_index(*stack_a);
@@ -80,12 +53,16 @@ int	main(int argc, char **argv)
 
 	head_a = NULL;
 	head_b = NULL;
-	if (!args_are_valid(argc, argv))
+	if (!parse_and_build(argc, argv, &head_a))
 	{
 		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	fill_stack_a(argc, argv, &head_a);
+	if (!head_a || !head_a->next || is_sorted(head_a))
+	{
+		free_list(head_a);
+		return (0);
+	}
 	turk_algorithm(&head_a, &head_b);
 	free_list(head_a);
 	free_list(head_b);
