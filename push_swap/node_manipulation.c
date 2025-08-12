@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 16:44:22 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/04 19:04:26 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:52:01 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_nodes(t_node **head)
 	}
 }
 
-t_node	*createNode(int data)
+t_node	*createnode(int data)
 {
 	t_node	*new_node;
 
@@ -43,7 +43,7 @@ void	insert_front(t_node **head, int data)
 {
 	t_node	*new_node;
 
-	new_node = createNode(data);
+	new_node = createnode(data);
 	if (!new_node)
 		return ;
 	if (*head != NULL)
@@ -59,7 +59,7 @@ void	insert_end(t_node **head, int data)
 	t_node	*new_node;
 	t_node	*temp;
 
-	new_node = createNode(data);
+	new_node = createnode(data);
 	if (!new_node)
 		return ;
 	if (*head == NULL)

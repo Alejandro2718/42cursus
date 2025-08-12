@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/04 20:07:01 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/12 20:08:25 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct node
 	struct node	*next;
 }				t_node;
 
-t_node			*createNode(int data);
+t_node			*createnode(int data);
 void			insert_front(t_node **head, int data);
 void			insert_end(t_node **head, int data);
 void			free_list(t_node *head);
@@ -60,3 +60,9 @@ void			final_rotation(t_node **stack_a);
 void			turk_algorithm(t_node **stack_a, t_node **stack_b);
 void			calculate_push_costs(t_node *stack_a, t_node *stack_b);
 void			set_cheapest(t_node *stack);
+void			rotate_both_down(t_node **a, t_node **b, t_node *ta,
+					t_node *nb);
+void			align_a(t_node **a, t_node *ta);
+void			align_b(t_node **b, t_node *nb);
+void			rotate_silent(t_node **head);
+void			rev_rotate_silent(t_node **head);

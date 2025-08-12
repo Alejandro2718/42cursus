@@ -6,12 +6,12 @@
 #    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/24 19:23:08 by alejjime          #+#    #+#              #
-#    Updated: 2025/07/02 18:39:04 by alejjime         ###   ########.fr        #
+#    Updated: 2025/08/12 20:25:25 by alejjime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SOURCE = push_swap.c node_manipulation.c arguments_checker.c operations.c stack_state.c costs.c movement.c preparation.c update_structure.c
+SOURCE = push_swap.c node_manipulation.c arguments_checker.c operations.c operations_1.c operations_2.c stack_state.c costs.c movement.c movement_1.c preparation.c preparation_1.c update_structure.c
 OBJECTS = $(SOURCE:.c=.o)
 LIB = Libft
 

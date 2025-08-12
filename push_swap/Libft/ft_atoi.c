@@ -6,13 +6,13 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:13:06 by alejjime          #+#    #+#             */
-/*   Updated: 2024/12/27 19:32:49 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:55:11 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 This functions takes a pointer to a string
-and convert the numbers in the string into 
+and convert the numbers in the string into
 integer and return it
 */
 int	ft_atoi(const char *str)
@@ -24,8 +24,8 @@ int	ft_atoi(const char *str)
 	i = 0;
 	negative = 0;
 	temp = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' \
-	|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\t' || str[i] == '\v')
 		i++;
 	if (str[i] == '-')
 	{

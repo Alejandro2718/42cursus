@@ -6,27 +6,28 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:06:36 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/05 18:42:37 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:39:52 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_node *find_min_node(t_node *a)
+static t_node	*find_min_node(t_node *a)
 {
-	t_node *min;
-    t_node *cur;
+	t_node	*min;
+	t_node	*cur;
 
-    if (!a) 
-		return NULL;
-    min = a;
+	if (!a)
+		return (NULL);
+	min = a;
 	cur = a->next;
-    while (cur) {
-        if (cur->data < min->data)
-            min = cur;
-        cur = cur->next;
-    }
-    return min;
+	while (cur)
+	{
+		if (cur->data < min->data)
+			min = cur;
+		cur = cur->next;
+	}
+	return (min);
 }
 
 void	set_target_nodes(t_node *stack_a, t_node *stack_b)
