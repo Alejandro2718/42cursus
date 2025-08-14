@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// ---------------- basic duplicate checker by string (legacy) ---------------
 int	int_duplicate(char **argv)
 {
 	int	i;
@@ -34,7 +33,6 @@ int	int_duplicate(char **argv)
 	return (0);
 }
 
-// ---------------- robust numeric validation helpers ------------------------
 
 static int	is_sign(char c)
 {
@@ -92,7 +90,6 @@ static int	parse_long_in_range(const char *s, long *out)
 	return (1);
 }
 
-// ---------------- API kept for other uses ----------------------------------
 
 int	check_arg(char *argv)
 {
@@ -101,7 +98,6 @@ int	check_arg(char *argv)
 	return (parse_long_in_range(argv, &val));
 }
 
-// ---------------- parsing and building the stack ---------------------------
 
 static void	free_tokens(char **toks)
 {

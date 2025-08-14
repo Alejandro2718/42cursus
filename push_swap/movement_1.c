@@ -20,6 +20,8 @@ void	rotate_both_down(t_node **a, t_node **b, t_node *ta, t_node *nb)
 		rrr(a, b);
 		update_index(*a);
 		update_index(*b);
+		set_above_median(*a);
+		set_above_median(*b);
 	}
 }
 
@@ -32,6 +34,7 @@ void	align_a(t_node **a, t_node *ta)
 		else
 			rra(a);
 		update_index(*a);
+		set_above_median(*a);
 	}
 }
 
@@ -44,5 +47,6 @@ void	align_b(t_node **b, t_node *nb)
 		else
 			rrb(b);
 		update_index(*b);
+		set_above_median(*b);
 	}
 }

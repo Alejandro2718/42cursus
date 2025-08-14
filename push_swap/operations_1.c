@@ -19,6 +19,8 @@ void	sa(t_node **head_a)
 	t_node	*temp;
 	int		i;
 
+	if (!head_a || !*head_a || !(*head_a)->next)
+		return ;
 	i = 0;
 	temp = (*head_a)->next;
 	i = (*head_a)->data;
@@ -34,6 +36,8 @@ void	sb(t_node **head_b)
 	t_node	*temp;
 	int		i;
 
+	if (!head_b || !*head_b || !(*head_b)->next)
+		return ;
 	i = 0;
 	temp = (*head_b)->next;
 	i = (*head_b)->data;
@@ -51,6 +55,9 @@ void	ss(t_node **head_a, t_node **head_b)
 	int		i;
 	int		j;
 
+	if (!head_a || !*head_a || !(*head_a)->next || !head_b || !*head_b
+		|| !(*head_b)->next)
+		return ;
 	i = 0;
 	temp_a = (*head_a)->next;
 	i = (*head_a)->data;

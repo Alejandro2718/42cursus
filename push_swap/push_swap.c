@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// Helpers para reducir líneas en main y el algoritmo
 static void	process_b_cycle(t_node **stack_a, t_node **stack_b)
 {
 	update_index(*stack_a);

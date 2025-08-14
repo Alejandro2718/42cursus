@@ -30,12 +30,11 @@ void	move_to_top(t_node **stack, t_node *target)
 	while (target->index != 0)
 	{
 		if (target->above_median == 1)
-		{
 			ra(stack);
-		}
 		else
 			rra(stack);
 		update_index(*stack);
+		set_above_median(*stack);
 	}
 }
 
@@ -47,6 +46,8 @@ static void	rotate_both_up(t_node **a, t_node **b, t_node *ta, t_node *nb)
 		rr(a, b);
 		update_index(*a);
 		update_index(*b);
+		set_above_median(*a);
+		set_above_median(*b);
 	}
 }
 

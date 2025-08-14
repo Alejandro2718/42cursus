@@ -34,6 +34,11 @@ t_node	*createnode(int data)
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;
+	new_node->index = 0;
+	new_node->push_cost = 0;
+	new_node->above_median = 0;
+	new_node->cheapest = 0;
+	new_node->target_node = NULL;
 	new_node->prev = NULL;
 	new_node->next = NULL;
 	return (new_node);

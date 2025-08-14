@@ -34,7 +34,7 @@ void	set_above_median(t_node *stack)
 	median = size / 2;
 	while (stack)
 	{
-		if (stack->index > median)
+		if (stack->index <= median)
 			stack->above_median = 1;
 		else
 			stack->above_median = 0;
