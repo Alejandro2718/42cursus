@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:06:36 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/12 18:39:52 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/15 15:54:48 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ void	calculate_push_costs(t_node *stack_a, t_node *stack_b)
 	int		len_a;
 	int		len_b;
 	t_node	*cur;
+	int		cost_b;
+	int		cost_a;
+	int		simultaneous_cost;
 
 	len_a = stack_size(stack_a);
 	len_b = stack_size(stack_b);
@@ -70,13 +73,29 @@ void	calculate_push_costs(t_node *stack_a, t_node *stack_b)
 	while (cur)
 	{
 		if (cur->index <= len_b / 2)
-			cur->push_cost = cur->index;
+			cost_b = cur->index;
 		else
-			cur->push_cost = cur->index - len_b;
+			cost_b = len_b - cur->index;
 		if (cur->target_node && cur->target_node->index <= len_a / 2)
-			cur->push_cost += cur->target_node->index;
+			cost_a = cur->target_node->index;
 		else if (cur->target_node)
-			cur->push_cost += cur->target_node->index - len_a;
+			cost_a = len_a - cur->target_node->index;
+		else
+			cost_a = 0;
+		simultaneous_cost = cost_a + cost_b;
+		if (cur->target_node)
+		{
+			if ((cur->index <= len_b / 2 && cur->target_node->index <= len_a
+					/ 2) || (cur->index > len_b / 2
+					&& cur->target_node->index > len_a / 2))
+			{
+				if (cost_a > cost_b)
+					simultaneous_cost = cost_a;
+				else
+					simultaneous_cost = cost_b;
+			}
+		}
+		cur->push_cost = simultaneous_cost;
 		cur = cur->next;
 	}
 }

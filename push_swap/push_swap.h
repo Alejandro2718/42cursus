@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/12 21:08:09 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/15 15:32:06 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 # include "Libft/libft.h"
 # include <limits.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct node
 {
@@ -62,6 +62,7 @@ int				find_position(t_node *head, int value);
 int				is_sorted(t_node *head);
 int				find_min(t_node *head);
 int				find_max(t_node *head);
+int				find_median_value(t_node *head);
 void			update_index(t_node *stack);
 void			set_above_median(t_node *stack);
 void			reset_cheapest(t_node *stack);

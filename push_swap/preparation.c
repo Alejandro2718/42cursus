@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:53:11 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/12 20:25:08 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/15 15:55:09 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,26 @@ static void	apply_three_case(t_node **stack_a, int code)
 
 void	push_all_but_three(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*min_node;
-	int		min_val;
+	int	len;
+	int	pushed;
 
 	if (!stack_a || !*stack_a)
 		return ;
-	while (stack_size(*stack_a) > 3)
+	len = stack_size(*stack_a);
+	if (len <= 3)
+		return ;
+	pushed = 0;
+	pb(stack_a, stack_b);
+	pushed++;
+	if (len > 4)
 	{
-		update_index(*stack_a);
-		set_above_median(*stack_a);
-		min_val = find_min(*stack_a);
-		min_node = *stack_a;
-		while (min_node && min_node->data != min_val)
-			min_node = min_node->next;
-		if (!min_node)
-			break ;
-		move_to_top(stack_a, min_node);
 		pb(stack_a, stack_b);
+		pushed++;
+	}
+	while (len - pushed > 3)
+	{
+		pb(stack_a, stack_b);
+		pushed++;
 	}
 }
 
