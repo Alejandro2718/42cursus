@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 20:06:36 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/15 15:54:48 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:26:35 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,63 +57,41 @@ void	set_target_nodes(t_node *stack_a, t_node *stack_b)
 	}
 }
 
-void	calculate_push_costs(t_node *stack_a, t_node *stack_b)
+static int	calculate_rotation_cost(int index, int stack_size)
 {
-	int		len_a;
-	int		len_b;
-	t_node	*cur;
-	int		cost_b;
-	int		cost_a;
-	int		simultaneous_cost;
-
-	len_a = stack_size(stack_a);
-	len_b = stack_size(stack_b);
-	cur = stack_b;
-	set_target_nodes(stack_a, stack_b);
-	while (cur)
-	{
-		if (cur->index <= len_b / 2)
-			cost_b = cur->index;
-		else
-			cost_b = len_b - cur->index;
-		if (cur->target_node && cur->target_node->index <= len_a / 2)
-			cost_a = cur->target_node->index;
-		else if (cur->target_node)
-			cost_a = len_a - cur->target_node->index;
-		else
-			cost_a = 0;
-		simultaneous_cost = cost_a + cost_b;
-		if (cur->target_node)
-		{
-			if ((cur->index <= len_b / 2 && cur->target_node->index <= len_a
-					/ 2) || (cur->index > len_b / 2
-					&& cur->target_node->index > len_a / 2))
-			{
-				if (cost_a > cost_b)
-					simultaneous_cost = cost_a;
-				else
-					simultaneous_cost = cost_b;
-			}
-		}
-		cur->push_cost = simultaneous_cost;
-		cur = cur->next;
-	}
+	if (index <= stack_size / 2)
+		return (index);
+	else
+		return (stack_size - index);
 }
 
-void	set_cheapest(t_node *stack)
+static int	can_rotate_simultaneously(t_node *node_b, int len_a, int len_b)
 {
-	t_node	*cheapest;
+	if (!node_b->target_node)
+		return (0);
+	return ((node_b->index <= len_b / 2 && node_b->target_node->index <= len_a
+			/ 2) || (node_b->index > len_b / 2
+			&& node_b->target_node->index > len_a / 2));
+}
 
-	if (!stack)
-		return ;
-	cheapest = NULL;
-	while (stack)
+int	calculate_simultaneous_cost(t_node *node_b, int len_a, int len_b)
+{
+	int	cost_a;
+	int	cost_b;
+	int	simultaneous_cost;
+
+	cost_b = calculate_rotation_cost(node_b->index, len_b);
+	if (node_b->target_node)
+		cost_a = calculate_rotation_cost(node_b->target_node->index, len_a);
+	else
+		cost_a = 0;
+	simultaneous_cost = cost_a + cost_b;
+	if (can_rotate_simultaneously(node_b, len_a, len_b))
 	{
-		stack->cheapest = 0;
-		if (!cheapest || stack->push_cost < cheapest->push_cost)
-			cheapest = stack;
-		stack = stack->next;
+		if (cost_a > cost_b)
+			simultaneous_cost = cost_a;
+		else
+			simultaneous_cost = cost_b;
 	}
-	if (cheapest)
-		cheapest->cheapest = 1;
+	return (simultaneous_cost);
 }

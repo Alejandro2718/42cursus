@@ -6,7 +6,7 @@
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:21:02 by alejjime          #+#    #+#             */
-/*   Updated: 2025/08/15 15:32:06 by alejjime         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:53:45 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,14 @@ typedef struct node
 	struct node	*next;
 }				t_node;
 
-// list utils
 t_node			*createnode(int data);
 void			insert_front(t_node **head, int data);
 void			insert_end(t_node **head, int data);
 void			free_list(t_node *head);
 void			print_nodes(t_node **head);
 
-// args/validation
-int				check_arg(char *argv);
-int				int_duplicate(char **argv);
 int				parse_and_build(int argc, char **argv, t_node **head_a);
 
-// ops
 void			sa(t_node **head_a);
 void			sb(t_node **head_b);
 void			ss(t_node **head_a, t_node **head_b);
@@ -56,7 +51,6 @@ void			rrr(t_node **head_a, t_node **head_b);
 void			rotate_silent(t_node **head);
 void			rev_rotate_silent(t_node **head);
 
-// state/helpers
 int				stack_size(t_node *head);
 int				find_position(t_node *head, int value);
 int				is_sorted(t_node *head);
@@ -67,7 +61,6 @@ void			update_index(t_node *stack);
 void			set_above_median(t_node *stack);
 void			reset_cheapest(t_node *stack);
 
-// algorithm
 void			move_to_top(t_node **stack, t_node *target);
 void			execute_cheapest_move(t_node **stack_a, t_node **stack_b);
 void			push_all_but_three(t_node **stack_a, t_node **stack_b);
@@ -75,10 +68,17 @@ void			sort_three(t_node **stack_a);
 void			final_rotation(t_node **stack_a);
 void			turk_algorithm(t_node **stack_a, t_node **stack_b);
 void			calculate_push_costs(t_node *stack_a, t_node *stack_b);
+void			set_target_nodes(t_node *stack_a, t_node *stack_b);
 void			set_cheapest(t_node *stack);
 void			rotate_both_down(t_node **a, t_node **b, t_node *ta,
 					t_node *nb);
 void			align_a(t_node **a, t_node *ta);
 void			align_b(t_node **b, t_node *nb);
-
+int				has_numeric_duplicates(long *vals, int n);
+char			**dup_args(int argc, char **argv);
+void			free_tokens(char **toks);
+int				parse_long_in_range(const char *s, long *out);
+int				calculate_simultaneous_cost(t_node *node_b, int len_a,
+					int len_b);
+void			build_stack(t_node **head_a, long *vals, int count);
 #endif
