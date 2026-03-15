@@ -1,28 +1,16 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/27 18:15:37 by alejjime          #+#    #+#              #
-#    Updated: 2025/09/27 20:54:32 by alejjime         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = philo
-SOURCE = philo.c ft_atoi.c
+SOURCE = philosopers.c
 OBJECTS = $(SOURCE:.c=.o)
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -pthread
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CC) -o $@ $(OBJECTS)
+	$(CC) $(FLAGS) -o $@ $(OBJECTS)
 
-%.o: %.c
+%.o: %.c philo.h
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
@@ -32,4 +20,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-.PHONY : all clean fclean re
+
+.PHONY: all clean fclean re

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alejjime <alejjime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 20:53:15 by alejjime          #+#    #+#             */
-/*   Updated: 2025/09/27 20:53:30 by alejjime         ###   ########.fr       */
+/*   Created: 2024/12/23 17:13:06 by alejjime          #+#    #+#             */
+/*   Updated: 2025/08/12 18:55:11 by alejjime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ integer and return it
 */
 int	ft_atoi(const char *str)
 {
-	int i;
-	int negative;
-	int temp;
+	int	i;
+	int	negative;
+	int	temp;
 
 	i = 0;
 	negative = 0;
